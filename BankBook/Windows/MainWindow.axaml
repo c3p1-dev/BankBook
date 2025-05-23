@@ -1,0 +1,21 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:windows="clr-namespace:BankBook.Windows"
+		xmlns:controls="clr-namespace:BankBook.Controls"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="250"
+        x:Class="BankBook.Windows.MainWindow"
+		x:DataType="windows:MainWindow"
+        Title="BankBook"
+		Width="400"
+		Height="250"
+		SystemDecorations="Full"
+		CanResize="False"
+		Background="#FF1E1E2F"
+		Icon="avares://BankBook/Pictures/avalonia-logo.ico">
+	
+	<StackPanel HorizontalAlignment="Center">
+		<controls:TemperatureConvertor Margin="30"/>
+	</StackPanel>
+</Window>

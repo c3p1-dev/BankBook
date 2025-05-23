@@ -1,19 +1,12 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:local="clr-namespace:BankBook"
-        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
-        x:Class="BankBook.MainWindow"
-		x:DataType="local:MainWindow"
-        Title="BankBook"
-		Width="400"
-		Height="450"
-		SystemDecorations="Full"
-		CanResize="False"
-		Background="#FF1E1E2F">
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="210"
+             x:Class="BankBook.Controls.TemperatureConvertor"
+			 Background="#FF1E1E2F">
 	<StackPanel>
-		<Border Margin="5" CornerRadius="10" Background="LightBlue">
+		<Border Margin="5" CornerRadius="10" Background="DarkSlateBlue">
 			<TextBlock Margin="5" HorizontalAlignment="Center" FontSize="24">
 				Temperature Converter
 			</TextBlock>
@@ -26,4 +19,4 @@
 		</Grid>
 		<Button HorizontalAlignment="Center" Click="Button_OnClick">Calculate</Button>
 	</StackPanel>
-</Window>
+</UserControl>
