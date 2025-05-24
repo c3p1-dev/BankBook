@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:windows="clr-namespace:BankBook.Windows"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
+		x:DataType="windows:RegisterWindow"
+        x:Class="BankBook.Windows.RegisterWindow"
+        Title="BankBook - Register"
+		Background="#FF1E1E2F"
+		Icon="avares://BankBook/Pictures/avalonia-logo.ico"
+		Height="400"
+		Width="400"
+		CanResize="False">
+	<StackPanel Margin="10">
+		<Border Margin="5" Padding="5" CornerRadius="10" Background="DarkSlateBlue">
+			<TextBlock FontSize="24"
+				   HorizontalAlignment="Center"
+				   VerticalAlignment="Center"
+				   Text="Creating Account..." />
+		</Border>
+		<TextBlock Margin="10 15 10 5" TextWrapping="WrapWithOverflow">
+			You must set at least the account name the password to create an account.
+		</TextBlock>
+		<TextBlock FontStyle="Italic" Margin="10 0" TextWrapping="WrapWithOverflow">
+			This account is stored in a local database and the password is hashed, your data are not collected or used in any way.
+		</TextBlock>
+		<Separator Margin="10" />
+		<Grid Margin="5" ColumnDefinitions="150, 200" RowDefinitions="Auto, Auto, Auto, Auto">
+			<Label Margin="10" Grid.Row="0" Grid.Column="0">Account name : *</Label>
+			<TextBox Margin="0 5" Grid.Row="0" Grid.Column="1" Text="{Binding AccountName}"/>
+			<Label Margin="10" Grid.Row="1" Grid.Column="0">Email :</Label>
+			<TextBox Margin="0 5" Grid.Row="1" Grid.Column="1" Text="{Binding Email}" />
+			<Label Margin="10" Grid.Row="2" Grid.Column="0">Password : *</Label>
+			<TextBox PasswordChar="*" Margin="0 5" Grid.Row="2" Grid.Column="1" Text="{Binding Password}" />
+		</Grid>
+		<Separator Margin="10" />
+		<Grid Margin="5 5 0 0" ColumnDefinitions="170,75,145" RowDefinitions="Auto">
+			<Label Foreground="Red" Grid.Row="0" Grid.Column="0" Content="{Binding ErrorMessage}"></Label>
+			<Button Grid.Row="0" Grid.Column="1" Click="Cancel_Click">Cancel</Button>
+			<Button Grid.Row="0" Grid.Column="2" Click="CreateAccount_Click">Create Account</Button>
+		</Grid>
+	</StackPanel>
+</Window>

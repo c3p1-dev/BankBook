@@ -4,18 +4,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:windows="clr-namespace:BankBook.Windows"
 		xmlns:controls="clr-namespace:BankBook.Controls"
-        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="250"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
         x:Class="BankBook.Windows.MainWindow"
 		x:DataType="windows:MainWindow"
         Title="BankBook"
 		Width="400"
-		Height="250"
+		Height="300"
 		SystemDecorations="Full"
 		CanResize="False"
 		Background="#FF1E1E2F"
-		Icon="avares://BankBook/Pictures/avalonia-logo.ico">
-	
-	<StackPanel HorizontalAlignment="Center">
-		<controls:TemperatureConvertor Margin="30"/>
+		Icon="avares://BankBook/Pictures/avalonia-logo.ico"
+		Loaded="MainWindow_Loaded">
+
+	<StackPanel VerticalAlignment="Center">
+		<controls:TemperatureConvertor Margin="30" HorizontalAlignment="Center" />
+		<Separator />
+		<Button Margin="10" HorizontalAlignment="Center" TextBlock.TextAlignment="Center" Width="100" Click="Login_Click">Login</Button>
 	</StackPanel>
 </Window>
