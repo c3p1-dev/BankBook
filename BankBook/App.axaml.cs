@@ -15,7 +15,9 @@ namespace BankBook
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = new Windows.MainWindow();
+                //desktop.MainWindow = new Windows.MainWindow();
+                // Start app with login window
+                desktop.MainWindow = new Windows.LoginWindow();
             }
 
             base.OnFrameworkInitializationCompleted();

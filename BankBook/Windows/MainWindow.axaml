@@ -6,6 +6,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="BankBook.Windows.MainWindow"
 		Background="#FF1E1E2F"
+		Icon="avares://BankBook/Pictures/avalonia-logo.ico"
         Title="BankBook">
 	
 	<controls:TemperatureConvertor Padding="10"

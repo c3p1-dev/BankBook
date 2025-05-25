@@ -1,0 +1,65 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:windows="clr-namespace:BankBook.Windows"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
+		Width="400"
+		Height="400"
+		CanResize="False"
+        x:Class="BankBook.Windows.LoginWindow"
+		x:DataType="windows:LoginWindow"
+        Title="BankBook - Login"
+		Background="#FF1E1E2F"
+		Icon="avares://BankBook/Pictures/avalonia-logo.ico">
+	<TabControl Margin="0 5">
+		<TabItem Header="Login">
+			<StackPanel Margin="10">
+				<TextBlock Margin="10 15 10 5" TextWrapping="WrapWithOverflow">
+					Welcome to BankBook, enter your account name and your password. If you don't have an account yet, please click on Register.
+				</TextBlock>
+				<TextBlock FontStyle="Italic" Margin="15 10" TextWrapping="WrapWithOverflow">
+					Your account is stored in a local database and the password is hashed, your data are not collected or used in any way.
+				</TextBlock>
+				<Separator Margin="0 16 0 5" />
+				<Grid Margin="5" ColumnDefinitions="150, 200" RowDefinitions="Auto, Auto, Auto">
+					<Label Margin="10" Grid.Row="0" Grid.Column="0">Account name :</Label>
+					<TextBox Margin="0 5" Grid.Row="0" Grid.Column="1" Text="{Binding LoginAccountName}"/>
+					<Label Margin="10" Grid.Row="2" Grid.Column="0">Password :</Label>
+					<TextBox PasswordChar="*" Margin="0 5" Grid.Row="2" Grid.Column="1" Text="{Binding LoginPassword}" />
+				</Grid>
+				<Separator Margin="0 10 0 5" />
+				<Grid Margin="5 5" ColumnDefinitions="202,75,145" RowDefinitions="Auto">
+					<Label Foreground="Red" Grid.Row="0" Grid.Column="0" Content="{Binding LoginErrorMessage}" />
+					<Button Grid.Row="0" Grid.Column="1" Click="Cancel_Click">Cancel</Button>
+					<Button Grid.Row="0" Grid.Column="2" Width="73" Click="Login_Click" TextBlock.TextAlignment="Center">Login</Button>
+				</Grid>
+			</StackPanel>
+		</TabItem>
+		<TabItem Header="Register">
+			<StackPanel Margin="10">
+				<TextBlock Margin="10 15 10 5" TextWrapping="WrapWithOverflow">
+					You must set at least the account name the password to create an account.
+				</TextBlock>
+				<TextBlock FontStyle="Italic" Margin="10 0" TextWrapping="WrapWithOverflow">
+					This account is stored in a local database and the password is hashed, your data are not collected or used in any way.
+				</TextBlock>
+				<Separator Margin="0 10 0 5" />
+				<Grid Margin="5" ColumnDefinitions="150, 200" RowDefinitions="Auto, Auto, Auto, Auto">
+					<Label Margin="10" Grid.Row="0" Grid.Column="0">Account name : *</Label>
+					<TextBox Margin="0 5" Grid.Row="0" Grid.Column="1" Text="{Binding RegisterAccountName}"/>
+					<Label Margin="10" Grid.Row="1" Grid.Column="0">Email :</Label>
+					<TextBox Margin="0 5" Grid.Row="1" Grid.Column="1" Text="{Binding RegisterEmail}"/>
+					<Label Margin="10" Grid.Row="2" Grid.Column="0">Password : *</Label>
+					<TextBox PasswordChar="*" Margin="0 5" Grid.Row="2" Grid.Column="1" Text="{Binding RegisterPassword}"/>
+				</Grid>
+				<Separator Margin="0 10 0 5" />
+				<Grid Margin="5 5" ColumnDefinitions="202,75,145" RowDefinitions="Auto">
+					<TextBlock Foreground="Red" Grid.Row="0" Grid.Column="0" Text="{Binding RegisterErrorMessage}" TextWrapping="WrapWithOverflow"/>
+					<Button Grid.Row="0" Grid.Column="1" Click="Cancel_Click">Cancel</Button>
+					<Button Grid.Row="0" Grid.Column="2" Click="Register_Click">Register</Button>
+				</Grid>
+			</StackPanel>
+		</TabItem>
+	</TabControl>
+</Window>
