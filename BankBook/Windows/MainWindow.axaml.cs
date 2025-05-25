@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace BankBook
+namespace BankBook.Windows
 {
     public partial class MainWindow : Window
     {

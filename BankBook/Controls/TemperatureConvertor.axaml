@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="210"
+             x:Class="BankBook.Controls.TemperatureConvertor"
+			 Background="#FF1E1E2F">
+	<StackPanel>
+		<Border Margin="5" CornerRadius="10" Background="DarkSlateBlue">
+			<TextBlock Margin="5" HorizontalAlignment="Center" FontSize="24">
+				Temperature Converter
+			</TextBlock>
+		</Border>
+		<Grid Margin="5" ColumnDefinitions="120, 100" RowDefinitions="Auto, Auto, Auto">
+			<Label Grid.Row="0" Grid.Column="0" Margin="10">Celsius</Label>
+			<TextBox Name="Celsius" Grid.Row="0" Grid.Column="1" Margin="0 5"  TextChanged="Celsius_TextChanged"/>
+			<Label Grid.Row="1" Grid.Column="0" Margin="10">Farenheit</Label>
+			<TextBox Name="Farenheit" Grid.Row="1" Grid.Column="1" Margin="0 5" IsReadOnly="True"/>
+		</Grid>
+		<Button HorizontalAlignment="Center" Click="Button_OnClick">Calculate</Button>
+	</StackPanel>
+</UserControl>
