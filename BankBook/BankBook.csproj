@@ -9,9 +9,17 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Pictures\avalonia-logo.ico" />
+    <None Remove="Pictures\logo.png" />
+    <None Remove="Pictures\logo_blue.png" />
   </ItemGroup>
   <ItemGroup>
     <AvaloniaResource Include="Pictures\avalonia-logo.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Pictures\logo.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Pictures\logo_blue.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </AvaloniaResource>
   </ItemGroup>
@@ -32,5 +40,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Windows\LoginWindow.axaml.cs">
+      <DependentUpon>LoginWindow.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

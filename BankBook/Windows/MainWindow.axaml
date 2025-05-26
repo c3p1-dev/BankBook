@@ -8,9 +8,23 @@
 		Background="#FF1E1E2F"
 		Icon="avares://BankBook/Pictures/avalonia-logo.ico"
         Title="BankBook">
-	
-	<controls:TemperatureConvertor Padding="10"
-								   HorizontalAlignment="Center" VerticalAlignment="Center"
-								   BorderBrush="SlateBlue" BorderThickness="1"/>
-	
+	<StackPanel>
+		<DockPanel>
+			<Menu DockPanel.Dock="Top" Background="Black">
+				<MenuItem Header="_File">
+					<MenuItem Header="_Open..."/>
+					<Separator/>
+					<MenuItem Header="_Exit" Click="menuFileExit_Click"/>
+				</MenuItem>
+				<MenuItem Header="_Tools">
+					<MenuItem Header="Settings" />
+				</MenuItem>
+				<MenuItem Header="_Help">
+					<MenuItem Header="About BankBook" Click="menuHelpAbout_Click" />
+				</MenuItem>
+			</Menu>
+		</DockPanel>
+		<controls:TemperatureConvertor Margin="50"
+									   HorizontalAlignment="Center" VerticalAlignment="Center" />
+	</StackPanel>
 </Window>

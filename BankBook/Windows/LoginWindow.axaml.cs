@@ -26,13 +26,18 @@ public partial class LoginWindow : Window, INotifyPropertyChanged
         db = new BankBookContext();
     }
 
-    private void Cancel_Click(object? sender, RoutedEventArgs e)
+    private void LoginWindow_Opened(object? sender, EventArgs e)
+    {
+        fieldLoginAccountName.Focus();
+    }
+
+    private void buttonCancel_Click(object? sender, RoutedEventArgs e)
     {
         // close windows
         Close();
     }
 
-    private void Login_Click(object? sender, RoutedEventArgs e)
+    private void buttonLogin_Click(object? sender, RoutedEventArgs e)
     {
         // check fields
         if (fieldLoginAccountName.Text is null)
@@ -106,7 +111,7 @@ public partial class LoginWindow : Window, INotifyPropertyChanged
         }
     }
 
-    private void Register_Click(object? sender, RoutedEventArgs e)
+    private void buttonRegister_Click(object? sender, RoutedEventArgs e)
     {
         // check fields
         if (fieldRegisterAccountName.Text is null)
@@ -188,7 +193,7 @@ public partial class LoginWindow : Window, INotifyPropertyChanged
     public void fieldLoginPassword_KeyUp(object? sender, KeyEventArgs e)
     {
         if (e.Key == Key.Enter)
-            Login_Click(sender, e);
+            buttonLogin_Click(sender, e);
     }
 
     public void fieldRegisterAccountName_KeyUp(object? sender, KeyEventArgs e)
@@ -205,7 +210,7 @@ public partial class LoginWindow : Window, INotifyPropertyChanged
     public void fieldRegisterPassword_KeyUp(object? sender, KeyEventArgs e)
     {
         if (e.Key == Key.Enter)
-            Register_Click(sender, e);
+            buttonRegister_Click(sender, e);
     }
 
     private void ClearLoginForm()
