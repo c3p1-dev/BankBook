@@ -9,9 +9,7 @@
         x:Class="BankBook.AboutWindow"
         Title="About BankBook"
 		Icon="avares://BankBook/Pictures/avalonia-logo.ico"
-		TransparencyLevelHint="AcrylicBlur"
-        Background="Transparent"
-        ExtendClientAreaToDecorationsHint="True">
+        Background="#FF1E1E2F">
 	<StackPanel Margin="0 35">
 		<TextBlock TextAlignment="Center" FontSize="35">BankBook</TextBlock>
 		<Grid ColumnDefinitions="400, 400" RowDefinitions="Auto">
@@ -29,11 +27,11 @@
 						-> github.com/c3p1-dev/BankBook
 					</HyperlinkButton>
 				</TextBlock>
-					<TextBlock FontSize="16" Margin="0 10 25 0" TextWrapping="WrapWithOverflow">
+				<TextBlock FontSize="16" Margin="0 10 25 0" TextWrapping="WrapWithOverflow">
 					BankBook is a simple bank account manager, written in C#, with Avalonia, making in cross-platform.
 				</TextBlock>
 				<TextBlock FontSize="16" Margin="0 0 25 0" TextWrapping="WrapWithOverflow">
-					As this software does not require a complex database management system, it currently based on SQLite3.
+					As this software does not require a complex database management system, it is currently based on SQLite3.
 				</TextBlock>
 				<TextBlock FontSize="16" Margin="0 10 25 0" TextWrapping="WrapWithOverflow">
 					BankBook is currently at a very early stage of its development.
