@@ -24,13 +24,13 @@
 				<Separator Margin="0 16 0 5" />
 				<Grid Margin="5" ColumnDefinitions="150, 200" RowDefinitions="Auto, Auto, Auto">
 					<Label Margin="10" Grid.Row="0" Grid.Column="0">Account name :</Label>
-					<TextBox Margin="0 5" Grid.Row="0" Grid.Column="1" Text="{Binding LoginAccountName}"/>
+					<TextBox Name="fieldLoginAccountName" Margin="0 5" Grid.Row="0" Grid.Column="1" KeyUp="fieldLoginAccountName_KeyUp" />
 					<Label Margin="10" Grid.Row="2" Grid.Column="0">Password :</Label>
-					<TextBox PasswordChar="*" Margin="0 5" Grid.Row="2" Grid.Column="1" Text="{Binding LoginPassword}" />
+					<TextBox Name="fieldLoginPassword" PasswordChar="*" Margin="0 5" Grid.Row="2" Grid.Column="1" KeyUp="fieldLoginPassword_KeyUp" />
 				</Grid>
 				<Separator Margin="0 10 0 5" />
 				<Grid Margin="5 5" ColumnDefinitions="202,75,145" RowDefinitions="Auto">
-					<Label Foreground="Red" Grid.Row="0" Grid.Column="0" Content="{Binding LoginErrorMessage}" />
+					<TextBlock Name="labelLoginErrorMessage" Foreground="Red" Grid.Row="0" Grid.Column="0"  TextWrapping="WrapWithOverflow" />
 					<Button Grid.Row="0" Grid.Column="1" Click="Cancel_Click">Cancel</Button>
 					<Button Grid.Row="0" Grid.Column="2" Width="73" Click="Login_Click" TextBlock.TextAlignment="Center">Login</Button>
 				</Grid>
@@ -47,15 +47,15 @@
 				<Separator Margin="0 10 0 5" />
 				<Grid Margin="5" ColumnDefinitions="150, 200" RowDefinitions="Auto, Auto, Auto, Auto">
 					<Label Margin="10" Grid.Row="0" Grid.Column="0">Account name : *</Label>
-					<TextBox Margin="0 5" Grid.Row="0" Grid.Column="1" Text="{Binding RegisterAccountName}"/>
+					<TextBox Name="fieldRegisterAccountName" Margin="0 5" Grid.Row="0" Grid.Column="1" KeyUp="fieldRegisterAccountName_KeyUp"  />
 					<Label Margin="10" Grid.Row="1" Grid.Column="0">Email :</Label>
-					<TextBox Margin="0 5" Grid.Row="1" Grid.Column="1" Text="{Binding RegisterEmail}"/>
+					<TextBox Name="fieldRegisterEmail" Margin="0 5" Grid.Row="1" Grid.Column="1" KeyUp="fieldRegisterEmail_KeyUp" />
 					<Label Margin="10" Grid.Row="2" Grid.Column="0">Password : *</Label>
-					<TextBox PasswordChar="*" Margin="0 5" Grid.Row="2" Grid.Column="1" Text="{Binding RegisterPassword}"/>
+					<TextBox Name="fieldRegisterPassword" PasswordChar="*" Margin="0 5" Grid.Row="2" Grid.Column="1" KeyUp="fieldRegisterPassword_KeyUp" />
 				</Grid>
 				<Separator Margin="0 10 0 5" />
 				<Grid Margin="5 5" ColumnDefinitions="202,75,145" RowDefinitions="Auto">
-					<TextBlock Foreground="Red" Grid.Row="0" Grid.Column="0" Text="{Binding RegisterErrorMessage}" TextWrapping="WrapWithOverflow"/>
+					<TextBlock Name="labelRegisterErrorMessage" Foreground="Red" Grid.Row="0" Grid.Column="0" TextWrapping="WrapWithOverflow" />
 					<Button Grid.Row="0" Grid.Column="1" Click="Cancel_Click">Cancel</Button>
 					<Button Grid.Row="0" Grid.Column="2" Click="Register_Click">Register</Button>
 				</Grid>
