@@ -9,11 +9,26 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Pictures\avalonia-logo.ico" />
+    <None Remove="Pictures\Icons\account.png" />
+    <None Remove="Pictures\Icons\dashboard.png" />
+    <None Remove="Pictures\Icons\subclass.png" />
     <None Remove="Pictures\logo.png" />
     <None Remove="Pictures\logo_blue.png" />
   </ItemGroup>
   <ItemGroup>
     <AvaloniaResource Include="Pictures\avalonia-logo.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Pictures\Icons\account.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Pictures\Icons\class.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Pictures\Icons\dashboard.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <AvaloniaResource Include="Pictures\Icons\subclass.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </AvaloniaResource>
     <AvaloniaResource Include="Pictures\logo.png">

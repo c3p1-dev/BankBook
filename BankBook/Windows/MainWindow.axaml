@@ -8,13 +8,14 @@
 		Background="#FF1E1E2F"
 		Icon="avares://BankBook/Pictures/avalonia-logo.ico"
         Title="BankBook">
-	<StackPanel>
-		<DockPanel>
+	<!-- Global Grid-->
+	<Grid RowDefinitions="Auto,*">
+		<DockPanel Grid.Row="0">
 			<Menu DockPanel.Dock="Top" Background="Black">
 				<MenuItem Header="_File">
-					<MenuItem Header="_Open..."/>
+					<MenuItem Header="_Open..." />
 					<Separator/>
-					<MenuItem Header="_Exit" Click="menuFileExit_Click"/>
+					<MenuItem Header="_Exit" Click="menuFileExit_Click" />
 				</MenuItem>
 				<MenuItem Header="_Tools">
 					<MenuItem Header="Settings" />
@@ -24,7 +25,9 @@
 				</MenuItem>
 			</Menu>
 		</DockPanel>
-		<controls:TemperatureConvertor Margin="50"
-									   HorizontalAlignment="Center" VerticalAlignment="Center" />
-	</StackPanel>
+		<!-- Main Grid -->
+		<Grid Grid.Row="1" ColumnDefinitions="110,*" RowDefinitions="*">
+			<controls:SideBar Grid.Row="0" Margin="5"/>
+		</Grid>
+	</Grid>
 </Window>
