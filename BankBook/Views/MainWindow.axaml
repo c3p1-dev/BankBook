@@ -1,0 +1,105 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:BankBook.ViewModels"
+		xmlns:ui="using:FluentAvalonia.UI.Controls"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+		d:DesignWidth="1090" Width="1090" MinWidth="960"
+		d:DesignHeight="720" Height="720" MinHeight="720"
+        x:Class="BankBook.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+		WindowStartupLocation="CenterOwner"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="BankBook"
+		Loaded="Window_Loaded"
+		Closing="Window_Closing">
+
+	<Grid RowDefinitions="Auto, *" ColumnDefinitions="*">
+		
+		<DockPanel Grid.Row="0">
+			<Menu DockPanel.Dock="Top">
+				<MenuItem Header="_File">
+					<MenuItem Header="_Open..." />
+					<Separator/>
+					<MenuItem Header="_Exit" Click="MenuFilesExit_Click"/>
+				</MenuItem>
+				<MenuItem Header="_Tools">
+					<MenuItem Header="Settings" Click="MenuToolsSettings_Click" />
+				</MenuItem>
+				<MenuItem Header="_Help">
+					<MenuItem Header="About BankBook" Click="MenuHelpAbout_Click" />
+				</MenuItem>
+			</Menu>
+		</DockPanel>
+
+		<ui:NavigationView Grid.Row="1"
+						   Name="navigateView"
+						   IsPaneToggleButtonVisible="False"
+						   IsSettingsVisible="False"
+						   PaneDisplayMode="LeftCompact"
+						   Content="{Binding CurrentPage}">
+
+			<ui:NavigationView.MenuItems>
+
+				<ui:NavigationViewItem IsHitTestVisible="False"
+									   Margin="0 5 0 20">
+
+					<ui:NavigationViewItem.Content>
+						<Image Source="/Assets/avalonia-logo.ico"
+							   Width="32"
+							   Height="32"
+							   RenderOptions.BitmapInterpolationMode="HighQuality"/>
+					</ui:NavigationViewItem.Content>
+
+				</ui:NavigationViewItem>
+
+				<ui:NavigationViewItem Content="Home Page"
+									   Tapped="HomePage_Tapped">
+
+					<ui:NavigationViewItem.Content>
+						<ui:SymbolIcon Symbol="Home"
+									   Height="14"
+									   Width="14"
+									   ToolTip.Tip="Home"/>
+					</ui:NavigationViewItem.Content>
+
+				</ui:NavigationViewItem>
+
+				<ui:NavigationViewItem Content="About Page"
+									   Tapped="AboutPage_Tapped">
+
+					<PathIcon Data="{DynamicResource info_regular}"
+							  Width="14" Height="14"
+							  ToolTip.Tip="About"/>
+				</ui:NavigationViewItem>
+
+			</ui:NavigationView.MenuItems>
+
+
+			<ui:NavigationView.FooterMenuItems>
+
+				<ui:NavigationViewItem Content="Logout"
+									   Tapped="Theme_Tapped">
+					<ui:NavigationViewItem.Content>
+						<ui:SymbolIcon Name="themeSymbol"
+									   Symbol="WeatherSunny"
+									   Height="14"
+									   Width="14"/>
+					</ui:NavigationViewItem.Content>
+				</ui:NavigationViewItem>
+
+				<ui:NavigationViewItem Content="Logout"
+									   Tapped="Logout_Tapped">
+					<ui:NavigationViewItem.Content>
+						<PathIcon Data="{DynamicResource power_regular}"
+								  Width="14" Height="14"
+								  ToolTip.Tip="Logout"/>
+					</ui:NavigationViewItem.Content>
+				</ui:NavigationViewItem>
+			</ui:NavigationView.FooterMenuItems>
+		</ui:NavigationView>
+
+	</Grid>
+
+</Window>

@@ -1,0 +1,65 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:vm="using:BankBook.ViewModels"
+			 x:DataType="vm:HomePageViewModel"
+             x:Class="BankBook.HomePageView">
+
+
+	<ScrollViewer Padding="20">
+		<StackPanel Spacing="20">
+
+			<StackPanel Spacing="10">
+				<TextBlock Text="Home Page"
+						   FontWeight="Bold"
+						   FontSize="24"/>
+				<Separator/>
+			</StackPanel>
+
+			<ItemsControl ItemsSource="{Binding Pages}">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<WrapPanel />
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+
+						<Button Tag="{Binding Name}"
+								Margin="5"
+								Height="90"
+								Width="235"
+								Click="Page_Click">
+							<Button.Content>
+
+								<Panel Height="90"
+									   Width="235">
+
+									<StackPanel Spacing="5"
+												HorizontalAlignment="Center"
+												VerticalAlignment="Center">
+										<TextBlock Text="{Binding Name}"
+												   FontWeight="DemiBold"
+												   HorizontalAlignment="Center"/>
+
+										<Separator />
+
+										<TextBlock Text="{Binding Description}"
+												   TextWrapping="Wrap"
+												   FontSize="10"
+												   HorizontalAlignment="Center"/>
+
+									</StackPanel>
+								</Panel>
+
+							</Button.Content>
+						</Button>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</StackPanel>
+	</ScrollViewer>
+
+</UserControl>

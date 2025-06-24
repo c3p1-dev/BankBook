@@ -1,6 +1,8 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using BankBook.ViewModels;
+using BankBook.Views;
 
 namespace BankBook
 {
@@ -13,11 +15,31 @@ namespace BankBook
 
         public override void OnFrameworkInitializationCompleted()
         {
+
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                //desktop.MainWindow = new Windows.MainWindow();
-                // Start app with login window
-                desktop.MainWindow = new Windows.LoginWindow();
+                var theme = new ThemeSettingsWindowViewModel();
+                theme.LoadSettings();
+
+#if DEBUG
+                // if debug mode is active, splash is closed
+                desktop.MainWindow = new MainWindow
+                {
+                    DataContext = new MainWindowViewModel()
+                };
+#else
+        // if release mode is active, splash is opened
+        desktop.MainWindow = new SplashScreenWindow(() =>
+        {
+            var mainWindow = new MainWindow
+            {
+                DataContext = new MainWindowViewModel()
+            };
+
+            mainWindow.Show();
+            desktop.MainWindow = mainWindow;
+        });
+#endif
             }
 
             base.OnFrameworkInitializationCompleted();
