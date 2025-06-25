@@ -15,9 +15,9 @@ namespace BankBook.ViewModels
             set => RaiseAndSetIfChanged(ref _currentPage, value);
         }
 
-        public static Window InstanceMainWindow { get; set; }
+        public static Window? InstanceMainWindow { get; set; }
 
-        public static MainWindowViewModel InstanceMainWindowVM { get; private set; }
+        public static MainWindowViewModel? InstanceMainWindowVM { get; private set; }
 
         #region Pages
         private HomePageView _homePage = new();
@@ -41,31 +41,31 @@ namespace BankBook.ViewModels
             switch (page)
             {
                 case PagesEnum.HomePage:
-                    InstanceMainWindowVM.CurrentPage = _homePage;
+                    InstanceMainWindowVM!.CurrentPage = _homePage;
                     break;
                 case PagesEnum.AboutPage:
-                    InstanceMainWindowVM.CurrentPage = _aboutPage;
+                    InstanceMainWindowVM!.CurrentPage = _aboutPage;
                     break;
                 case PagesEnum.SplashPage:
-                    InstanceMainWindowVM.CurrentPage = _splashPage;
+                    InstanceMainWindowVM!.CurrentPage = _splashPage;
                     break;
                 case PagesEnum.ThemeSettingsPage:
-                    InstanceMainWindowVM.CurrentPage = _themeSettingsPage;
+                    InstanceMainWindowVM!.CurrentPage = _themeSettingsPage;
                     break;
                 case PagesEnum.TextInputDialogPage:
-                    InstanceMainWindowVM.CurrentPage = _textInputDialogPage;
+                    InstanceMainWindowVM!.CurrentPage = _textInputDialogPage;
                     break;
                 case PagesEnum.ConverterUsagePage:
-                    InstanceMainWindowVM.CurrentPage = _converterUsagePage;
+                    InstanceMainWindowVM!.CurrentPage = _converterUsagePage;
                     break;
                 case PagesEnum.TaskDialogPage:
-                    InstanceMainWindowVM.CurrentPage = _taskDialogPage;
+                    InstanceMainWindowVM!.CurrentPage = _taskDialogPage;
                     break;
                 case PagesEnum.BankAccountsPage:
-                    InstanceMainWindowVM.CurrentPage = _bankAccountsPage;
+                    InstanceMainWindowVM!.CurrentPage = _bankAccountsPage;
                     break;
                 case PagesEnum.AddBankAccountPage:
-                    InstanceMainWindowVM.CurrentPage = _addBankAccountPage;
+                    InstanceMainWindowVM!.CurrentPage = _addBankAccountPage;
                     break;
                 default:
                     break;

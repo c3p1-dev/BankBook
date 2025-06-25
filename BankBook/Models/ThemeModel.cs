@@ -4,8 +4,8 @@ namespace BankBook.Models
 {
     public class ThemeModel
     {
-        public ThemeVariant AppTheme { get; set; }
-        public CustomAccentColorARGB CustomAccentColor { get; set; }
+        public ThemeVariant? AppTheme { get; set; }
+        public CustomAccentColorARGB? CustomAccentColor { get; set; }
     }
 
     public class CustomAccentColorARGB

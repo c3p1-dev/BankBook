@@ -17,19 +17,27 @@
 
 			<TextBlock Text="Add a new account" FontSize="18" FontWeight="Bold" Margin="0,0,0,20"/>
 
-			<TextBlock Text="Account Name" />
+			<TextBlock Text="Account Name ">
+				<TextBlock Foreground="LightCoral" Text="*" />
+			</TextBlock>
 			<TextBox Text="{Binding Name, Mode=TwoWay}" GotFocus="TextBox_GotFocus" KeyDown="TextBox_KeyDown"/>
 
-			<TextBlock Text="Bank" />
+			<TextBlock Text="Bank ">
+				<TextBlock Foreground="LightCoral" Text="*" />
+			</TextBlock>
 			<TextBox Text="{Binding Bank, Mode=TwoWay}" GotFocus="TextBox_GotFocus" KeyDown="TextBox_KeyDown"/>
 
 			<TextBlock Text="Description"/>
 			<TextBox Text="{Binding Description, Mode=TwoWay}" Watermark="More account informations" GotFocus="TextBox_GotFocus" KeyDown="TextBox_KeyDown"/>
 
-			<TextBlock Text="SWIFT/BIC Code" />
+			<TextBlock Text="SWIFT/BIC Code ">
+				<TextBlock Foreground="LightCoral" Text="*" />
+			</TextBlock>
 			<TextBox Text="{Binding Swift, Mode=TwoWay}" GotFocus="TextBox_GotFocus" KeyDown="TextBox_KeyDown"/>
 
-			<TextBlock Text="IBAN" />
+			<TextBlock Text="IBAN ">
+				<TextBlock Foreground="LightCoral" Text="*" />
+			</TextBlock>
 			<TextBox Text="{Binding IBAN, Mode=TwoWay}" GotFocus="TextBox_GotFocus" KeyDown="TextBox_KeyDown"/>
 
 			<TextBlock Text="URL" />

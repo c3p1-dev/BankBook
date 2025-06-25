@@ -29,7 +29,7 @@ namespace BankBook.Views
             ClearFields();
 
             // Go back to BankAccountsPage
-            MainWindowViewModel.InstanceMainWindowVM.NavigateToPage(Models.PagesEnum.BankAccountsPage);
+            MainWindowViewModel.InstanceMainWindowVM!.NavigateToPage(Models.PagesEnum.BankAccountsPage);
         }
 
         private async void OnAddClicked(object sender, RoutedEventArgs e)
@@ -62,7 +62,7 @@ namespace BankBook.Views
   
                     // Clear fields and go back to BankAccountsPage
                     ClearFields();
-                    MainWindowViewModel.InstanceMainWindowVM.NavigateToPage(Models.PagesEnum.BankAccountsPage);
+                    MainWindowViewModel.InstanceMainWindowVM!.NavigateToPage(Models.PagesEnum.BankAccountsPage);
                 }
             }
         }

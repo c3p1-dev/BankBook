@@ -12,12 +12,12 @@ namespace BankBook.Utils
 {
     public class ThemeHelper
     {
-        private static readonly FluentAvaloniaTheme _faTheme;
+        private static readonly FluentAvaloniaTheme? _faTheme;
         private const string _fileName = "themesettings.json";
 
         static ThemeHelper()
         {
-            _faTheme = App.Current.Styles[0] as FluentAvaloniaTheme;
+            _faTheme = App.Current!.Styles[0] as FluentAvaloniaTheme;
         }
 
         // We use the ThemeSettingsWindowViewModel's LoadSettings method to load the theme settings.

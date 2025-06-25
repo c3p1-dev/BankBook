@@ -66,6 +66,20 @@
 
 				</ui:NavigationViewItem>
 
+
+				<ui:NavigationViewItem Content="Bank Accounts"
+									   Tapped="BankAccountsPage_Tapped">
+
+					<ui:NavigationViewItem.Content>
+						<ui:SymbolIcon Symbol="List"
+									   Height="14"
+									   Width="14"
+									   ToolTip.Tip="Bank Accounts"/>
+					</ui:NavigationViewItem.Content>
+
+				</ui:NavigationViewItem>
+
+
 				<ui:NavigationViewItem Content="About Page"
 									   Tapped="AboutPage_Tapped">
 

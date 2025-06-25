@@ -22,7 +22,7 @@ public partial class HomePageView : UserControl
             return;
         }
 
-        MainWindowViewModel.InstanceMainWindowVM.NavigateToPage(selectedPage.Page);
+        MainWindowViewModel.InstanceMainWindowVM!.NavigateToPage(selectedPage.Page);
 
     }
 }

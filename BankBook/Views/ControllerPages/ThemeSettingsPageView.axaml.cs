@@ -23,9 +23,9 @@ public partial class ThemeSettingsPageView : UserControl
 
         if (TryGetResource("SystemAccentColor", null, out var value))
         {
-            var color = Unsafe.Unbox<Color>(value);
-            dc.CustomAccentColor = color;
-            dc.ListBoxColor = color;
+            var color = Unsafe.Unbox<Color>(value!);
+            dc!.CustomAccentColor = color;
+            dc!.ListBoxColor = color;
         }
     }
 

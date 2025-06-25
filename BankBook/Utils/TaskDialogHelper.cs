@@ -70,7 +70,7 @@ namespace BankBook.Utils
 
             var result = await taskDialog.ShowAsync(true);
 
-            return result == "Yes";
+            return result.ToString() == "Yes";
         }
     }
 

@@ -43,7 +43,7 @@ public partial class TextInputDialog : Window
             return;
         }
 
-        if (_beforeClosing != null && !_beforeClosing(txtBox.Text))
+        if (_beforeClosing != null && !_beforeClosing(txtBox.Text!))
         {
             return;
         }

@@ -25,7 +25,7 @@ namespace BankBook.Views.ControllerPages
 
         private void OnAddAccountClicked(object sender, RoutedEventArgs e)
         {
-            MainWindowViewModel.InstanceMainWindowVM.NavigateToPage(Models.PagesEnum.AddBankAccountPage);
+            MainWindowViewModel.InstanceMainWindowVM!.NavigateToPage(Models.PagesEnum.AddBankAccountPage);
         }
     }
 }

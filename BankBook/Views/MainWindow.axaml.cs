@@ -79,6 +79,11 @@ namespace BankBook.Views
             _viewModel.NavigateToPage(PagesEnum.AboutPage);
         }
 
+        private void BankAccountsPage_Tapped(object? sender, Avalonia.Input.TappedEventArgs e)
+        {
+            _viewModel.NavigateToPage(PagesEnum.BankAccountsPage);
+        }
+
         private async void Logout_Tapped(object? sender, Avalonia.Input.TappedEventArgs e)
         {
             var owner = VisualRoot as Window;
@@ -133,7 +138,7 @@ namespace BankBook.Views
             if (result)
             {
 
-                if (App.Current.RequestedThemeVariant is null)
+                if (App.Current!.RequestedThemeVariant is null)
                 {
                     e.Cancel = false;
                     return;

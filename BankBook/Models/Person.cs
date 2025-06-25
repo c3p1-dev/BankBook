@@ -4,7 +4,7 @@ namespace BankBook.Models
 {
     public class Person : INotifyPropertyChanged
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         private int _age;
         public int Age

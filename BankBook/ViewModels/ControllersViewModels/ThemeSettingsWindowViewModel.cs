@@ -17,30 +17,30 @@ namespace BankBook.ViewModels
     {
         private bool _useCustomAccentColor;
         private Color _customAccentColor;
-        private string _currentAppTheme;
+        private string? _currentAppTheme;
         private FlowDirection _currentFlowDirection;
         private Color? _listBoxColor;
-        private bool _ignoreSetListBoxColor = false;
+        //private bool _ignoreSetListBoxColor = false;
 
         private const string _fileName = "themesettings.json";
         private const string _system = "System";
         private const string _dark = "Dark";
         private const string _light = "Light";
-        private readonly FluentAvaloniaTheme _faTheme;
+        private readonly FluentAvaloniaTheme? _faTheme;
 
-        public List<Color> PredefinedColors { get; private set; }
+        public List<Color>? PredefinedColors { get; private set; }
 
         public class ThemeSettings
         {
-            public string TSAppTheme { get; set; }
+            public string? TSAppTheme { get; set; }
             public FlowDirection TSFlowDirection { get; set; }
             public bool TSUseCustomAccent { get; set; }
-            public CustomAccentColorARGB TSCustomAccentColor { get; set; }
+            public CustomAccentColorARGB? TSCustomAccentColor { get; set; }
         }
         public ThemeSettingsWindowViewModel()
         {
             GetPredefColors();
-            _faTheme = Application.Current.Styles[0] as FluentAvaloniaTheme;
+            _faTheme = Application.Current!.Styles[0] as FluentAvaloniaTheme;
             LoadSettings();
         }
 
@@ -77,14 +77,14 @@ namespace BankBook.ViewModels
 
                 if (settings != null)
                 {
-                    CurrentAppTheme = settings.TSAppTheme ?? settingsWithThemeHelper!.AppTheme.ToString();
+                    CurrentAppTheme = settings.TSAppTheme ?? settingsWithThemeHelper!.AppTheme!.ToString();
                     CurrentFlowDirection = settings.TSFlowDirection;
                     UseCustomAccent = settings.TSUseCustomAccent;
                     CustomAccentColor = Color.FromArgb(
-                        settings.TSCustomAccentColor?.A ?? settingsWithThemeHelper!.CustomAccentColor.A,
-                        settings.TSCustomAccentColor?.R ?? settingsWithThemeHelper!.CustomAccentColor.R,
-                        settings.TSCustomAccentColor?.G ?? settingsWithThemeHelper!.CustomAccentColor.G,
-                        settings.TSCustomAccentColor?.B ?? settingsWithThemeHelper!.CustomAccentColor.B);
+                        settings.TSCustomAccentColor?.A ?? settingsWithThemeHelper!.CustomAccentColor!.A,
+                        settings.TSCustomAccentColor?.R ?? settingsWithThemeHelper!.CustomAccentColor!.R,
+                        settings.TSCustomAccentColor?.G ?? settingsWithThemeHelper!.CustomAccentColor!.G,
+                        settings.TSCustomAccentColor?.B ?? settingsWithThemeHelper!.CustomAccentColor!.B);
                 }
             }
             catch (Exception ex)
@@ -124,7 +124,7 @@ namespace BankBook.ViewModels
         }
         public string CurrentAppTheme
         {
-            get => _currentAppTheme;
+            get => _currentAppTheme!;
             set
             {
                 if (RaiseAndSetIfChanged(ref _currentAppTheme, value))
@@ -132,21 +132,21 @@ namespace BankBook.ViewModels
                     var newTheme = GetThemeVariant(value);
                     if (newTheme != null)
                     {
-                        Application.Current.RequestedThemeVariant = newTheme;
+                        Application.Current!.RequestedThemeVariant = newTheme;
                     }
                     if (value != _system)
                     {
-                        _faTheme.PreferSystemTheme = false;
+                        _faTheme!.PreferSystemTheme = false;
                     }
                     else
                     {
-                        _faTheme.PreferSystemTheme = true;
+                        _faTheme!.PreferSystemTheme = true;
                     }
                 }
             }
         }
 
-        private ThemeVariant GetThemeVariant(string value)
+        private ThemeVariant? GetThemeVariant(string value)
         {
             switch (value)
             {
@@ -167,7 +167,7 @@ namespace BankBook.ViewModels
             {
                 if (RaiseAndSetIfChanged(ref _currentFlowDirection, value))
                 {
-                    var lifetime = Application.Current.ApplicationLifetime;
+                    var lifetime = Application.Current!.ApplicationLifetime;
                     if (lifetime is IClassicDesktopStyleApplicationLifetime cdl)
                     {
                         if (cdl.MainWindow!.FlowDirection == value)
@@ -194,7 +194,7 @@ namespace BankBook.ViewModels
                 {
                     if (value)
                     {
-                        if (_faTheme.TryGetResource("SystemAccentColor", null, out var curColor))
+                        if (_faTheme!.TryGetResource("SystemAccentColor", null, out var curColor))
                         {
                             _customAccentColor = (Color)curColor;
                             _listBoxColor = _customAccentColor;
@@ -254,10 +254,10 @@ namespace BankBook.ViewModels
             }
         }
 
-        public string CurrentVersion =>
+        public string? CurrentVersion =>
         typeof(Program).Assembly.GetName().Version?.ToString();
 
-        public string CurrentAvaloniaVersion =>
+        public string? CurrentAvaloniaVersion =>
             typeof(Application).Assembly.GetName().Version?.ToString();
 
         private void GetPredefColors()
@@ -317,7 +317,7 @@ namespace BankBook.ViewModels
 
         private void UpdateAppAccentColor(Color? color)
         {
-            _faTheme.CustomAccentColor = color;
+            _faTheme!.CustomAccentColor = color;
         }
     }
 }

@@ -32,7 +32,7 @@ namespace BankBook
         desktop.MainWindow = new SplashScreenWindow(() =>
         {
             var mainWindow = new MainWindow
-            {
+            ell
                 DataContext = new MainWindowViewModel()
             };
 

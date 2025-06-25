@@ -9,37 +9,37 @@ namespace BankBook.ViewModels
 {
     public class ConverterUsageWithDataGridWindowViewModel : ViewModelBase
     {
-        private ObservableCollection<Person> _people;
-        public ObservableCollection<Person> People
+        private ObservableCollection<Person>? _people;
+        public ObservableCollection<Person>? People
         {
             get => _people;
             set => RaiseAndSetIfChanged(ref _people, value);
         }
 
-        private ObservableCollection<SexTypes> _sexTypeList;
-        public ObservableCollection<SexTypes> SexTypeList
+        private ObservableCollection<SexTypes>? _sexTypeList;
+        public ObservableCollection<SexTypes>? SexTypeList
         {
             get => _sexTypeList;
             set => RaiseAndSetIfChanged(ref _sexTypeList, value);
         }
 
-        private string _newPersonName;
-        public string NewPersonName
+        private string? _newPersonName;
+        public string? NewPersonName
         {
             get => _newPersonName;
             set => RaiseAndSetIfChanged(ref _newPersonName, value);
         }
 
 
-        private SexTypes _selectedSexType;
-        public SexTypes SelectedSexType
+        private SexTypes? _selectedSexType;
+        public SexTypes? SelectedSexType
         {
             get => _selectedSexType;
             set => RaiseAndSetIfChanged(ref _selectedSexType, value);
         }
 
-        private string _newPersonAge;
-        public string NewPersonAge
+        private string? _newPersonAge;
+        public string? NewPersonAge
         {
             get => _newPersonAge;
             set => RaiseAndSetIfChanged(ref _newPersonAge, value);
@@ -53,8 +53,8 @@ namespace BankBook.ViewModels
             set => RaiseAndSetIfChanged(ref _isOpenError, value);
         }
 
-        private string _errorMessage;
-        public string ErrorMessage
+        private string? _errorMessage;
+        public string? ErrorMessage
         {
             get => _errorMessage;
             set => RaiseAndSetIfChanged(ref _errorMessage, value);
@@ -83,7 +83,7 @@ namespace BankBook.ViewModels
         {
             try
             {
-                if (!int.TryParse(NewPersonAge.ToString(), out int age) || age < 0)
+                if (!int.TryParse(NewPersonAge!.ToString(), out int age) || age < 0)
                 {
                     ShowErrorMessage("Please enter a valid age.");
                     return;
@@ -93,9 +93,9 @@ namespace BankBook.ViewModels
                 {
                     Name = NewPersonName ?? "New Person",
                     Age = Convert.ToInt32(NewPersonAge),
-                    Sex = SelectedSexType
+                    Sex = SelectedSexType!.Value
                 };
-                People.Add(newPerson);
+                People!.Add(newPerson);
 
                 // Clear input fields after adding
                 NewPersonName = string.Empty;
@@ -112,13 +112,13 @@ namespace BankBook.ViewModels
 
         public void DeleteSelectedPerson()
         {
-            var personToRemove = People.FirstOrDefault(p => p.IsSelected);
+            var personToRemove = People!.FirstOrDefault(p => p.IsSelected);
             if (personToRemove is null)
             {
                 ShowErrorMessage("Please select a person.");
             }
 
-            People.Remove(personToRemove);
+            People!.Remove(personToRemove!);
         }
 
         private void ShowErrorMessage(string message)

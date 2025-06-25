@@ -25,9 +25,9 @@ namespace BankBook
             _mainAction = mainAction;
 
         }
-        private void Window_Loaded(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void Window_Loaded(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            InitApp();
+            await InitApp();
         }
 
         public async Task InitApp()

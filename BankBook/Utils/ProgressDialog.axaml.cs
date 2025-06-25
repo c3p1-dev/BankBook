@@ -22,7 +22,7 @@ public partial class ProgressDialog : AppWindow
 
         progressDialog.ShowInTaskbar = false;
 
-        progressDialog.ShowDialog(owner);
+        await progressDialog.ShowDialog(owner);
         await Task.Delay(TimeSpan.FromSeconds(durationInSeconds));
         progressDialog.Close();
     }
