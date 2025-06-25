@@ -97,7 +97,7 @@ namespace BankBook.Views
                 if (index == -1)
                     return;
 
-                if (index == 14) // Url field, Enter trig OnAddClicked
+                if (index == 15) // Url field, Enter trig OnAddClicked
                     OnAddClicked(sender, e);
 
                 // Aller au suivant (boucle)
