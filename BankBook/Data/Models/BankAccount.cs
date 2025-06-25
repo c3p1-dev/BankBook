@@ -18,9 +18,8 @@ namespace BankBook.Data.Models
         [StringLength(100, ErrorMessage = "Account name too long (max 100 characters)")]
         public string Name { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "AccountNumber must be defined")]
-        [StringLength(30, ErrorMessage = "Account number too long (max 30 characters)")]
-        public string AccountNumber { get; set; } = string.Empty;
+        [StringLength(255, ErrorMessage = "Description too long (max 255 characters)")]
+        public string Description { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "SWIFT/BIC must be defined")]
         [StringLength(11, ErrorMessage = "SWIFT/BIC too long (max 11 characters)")]
@@ -32,10 +31,6 @@ namespace BankBook.Data.Models
         [RegularExpression("^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$", ErrorMessage = "Invalid IBAN format")]
         public string IBAN { get; set; } = string.Empty;
 
-        [StringLength(255, ErrorMessage = "Description too long (max 255 characters)")]
-        public string Description { get; set; } = string.Empty;
-
-        [Url(ErrorMessage = "The URL is not valid")]
         [StringLength(2083, ErrorMessage = "URL too long (max 2083 characters)")]
         public string Url { get; set; } = string.Empty;
     }

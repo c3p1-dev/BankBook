@@ -6,7 +6,7 @@ using System.IO;
 
 namespace BankBook.Data
 {
-    internal class BankBookContext : DbContext
+    public class BankBookContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

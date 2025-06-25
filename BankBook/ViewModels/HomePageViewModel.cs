@@ -13,6 +13,12 @@ namespace BankBook.ViewModels
             {
                 new PageModel
                 {
+                    Name = "Bank Accounts",
+                    Description = "Manage the account list.",
+                    Page = PagesEnum.BankAccountsPage
+                },
+                new PageModel
+                {
                     Name = "Splash Screen",
                     Description = "Shows a splash screen.",
                     Page = PagesEnum.SplashPage
@@ -40,8 +46,7 @@ namespace BankBook.ViewModels
                     Name = "Task Dialog",
                     Description = "Shows a window with task dialogs.",
                     Page = PagesEnum.TaskDialogPage
-                }
-
+                },
             };
         }
     }

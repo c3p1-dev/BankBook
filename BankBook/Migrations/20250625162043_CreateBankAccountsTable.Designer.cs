@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankBook.Migrations
 {
     [DbContext(typeof(BankBookContext))]
-    [Migration("20250625102912_CreateBankAccountsTable")]
+    [Migration("20250625162043_CreateBankAccountsTable")]
     partial class CreateBankAccountsTable
     {
         /// <inheritdoc />
@@ -24,11 +24,6 @@ namespace BankBook.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("AccountNumber")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Bank")
                         .IsRequired()

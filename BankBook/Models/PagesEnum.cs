@@ -9,5 +9,7 @@
         TextInputDialogPage = 5,
         ConverterUsagePage = 6,
         TaskDialogPage = 7,
+        BankAccountsPage = 8,
+        AddBankAccountPage = 9,
     }
 }

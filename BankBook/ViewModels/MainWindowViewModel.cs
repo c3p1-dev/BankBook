@@ -1,5 +1,8 @@
 ﻿using Avalonia.Controls;
 using BankBook.Models;
+using BankBook.Services;
+using BankBook.Views;
+using BankBook.Views.ControllerPages;
 
 namespace BankBook.ViewModels
 {
@@ -24,6 +27,8 @@ namespace BankBook.ViewModels
         private InputDialogPageView _textInputDialogPage = new();
         private ConverterUsagePageView _converterUsagePage = new();
         private TaskDialogPageView _taskDialogPage = new();
+        private BankAccountsView _bankAccountsPage = new();
+        private AddBankAccountView _addBankAccountPage = new();
         #endregion
 
         public MainWindowViewModel()
@@ -55,6 +60,12 @@ namespace BankBook.ViewModels
                     break;
                 case PagesEnum.TaskDialogPage:
                     InstanceMainWindowVM.CurrentPage = _taskDialogPage;
+                    break;
+                case PagesEnum.BankAccountsPage:
+                    InstanceMainWindowVM.CurrentPage = _bankAccountsPage;
+                    break;
+                case PagesEnum.AddBankAccountPage:
+                    InstanceMainWindowVM.CurrentPage = _addBankAccountPage;
                     break;
                 default:
                     break;

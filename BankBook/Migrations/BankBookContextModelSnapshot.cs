@@ -22,11 +22,6 @@ namespace BankBook.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("AccountNumber")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Bank")
                         .IsRequired()
                         .HasMaxLength(150)

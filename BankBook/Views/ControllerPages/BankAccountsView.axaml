@@ -1,0 +1,53 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:fa="using:FluentAvalonia.UI.Controls"
+    xmlns:vm="clr-namespace:BankBook.ViewModels"
+    x:Class="BankBook.Views.ControllerPages.BankAccountsView"
+    x:DataType="vm:BankAccountsViewModel">
+
+	<UserControl.DataContext>
+		<vm:BankAccountsViewModel />
+	</UserControl.DataContext>
+
+	<Border Padding="20">
+		<StackPanel>
+
+			<TextBlock Text="Registered Accounts" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+			<ListBox ItemsSource="{Binding Accounts, Mode=TwoWay}"
+                     SelectedItem="{Binding SelectedAccount}"
+                     MinHeight="200"
+					 MaxHeight="200">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding}" />
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+				
+
+			<TextBlock Text="Selected Account Details" FontSize="16" FontWeight="Bold" Margin="10,20,0,10"/>
+
+			<StackPanel Spacing="10">
+				<TextBlock Text="Account Name" />
+				<TextBox Text="{Binding SelectedAccount.Name}" IsReadOnly="True"/>
+
+				<TextBlock Text="Bank" />
+				<TextBox Text="{Binding SelectedAccount.Bank}" IsReadOnly="True"/>
+
+				<TextBlock Text="IBAN" />
+				<TextBox Text="{Binding SelectedAccount.IBAN}" IsReadOnly="True"/>
+
+				<TextBlock Text="SWIFT/BIC" />
+				<TextBox Text="{Binding SelectedAccount.Swift}" IsReadOnly="True"/>
+
+			</StackPanel>
+
+			<Button Content="Add Account"
+                    HorizontalAlignment="Left"
+                    Margin="0,30,0,0"
+                    Click="OnAddAccountClicked" />
+
+		</StackPanel>
+	</Border>
+</UserControl>
