@@ -1,6 +1,4 @@
-﻿using Avalonia.Media;
-
-namespace BankBook.Models
+﻿namespace BankBook.Models
 {
     public class PageModel
     {
@@ -8,6 +6,6 @@ namespace BankBook.Models
         public string? Description { get; set; }
 
         public PagesEnum Page { get; set; }
-       
+
     }
 }

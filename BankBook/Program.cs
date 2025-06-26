@@ -1,7 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.ReactiveUI;
 using BankBook.Data;
-using BankBook.Data.Models;
 using System;
 
 namespace BankBook

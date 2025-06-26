@@ -361,5 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/BankBook.db
-/BankBook/BankBook.db
+
+# Every sqlite database file
+*.db

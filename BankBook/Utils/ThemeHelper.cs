@@ -1,6 +1,4 @@
-﻿using Avalonia;
-using Avalonia.Media;
-using Avalonia.Styling;
+﻿using Avalonia.Styling;
 using BankBook.Models;
 using FluentAvalonia.Styling;
 using System;

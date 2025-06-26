@@ -3,14 +3,11 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
-using BankBook.ViewModels;
-using System.Linq;
-using FluentAvalonia.UI.Controls;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
-using BankBook.Services;
 using BankBook.Data.Models;
+using BankBook.ViewModels;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace BankBook.Views
 {
@@ -59,7 +56,7 @@ namespace BankBook.Views
                         Url = vm.Url,
                     };
                     await vm.AddAccount(account);
-  
+
                     // Clear fields and go back to BankAccountsPage
                     ClearFields();
                     MainWindowViewModel.InstanceMainWindowVM!.NavigateToPage(Models.PagesEnum.BankAccountsPage);
@@ -78,36 +75,36 @@ namespace BankBook.Views
             if (sender is Control currentControl)
             {
                 if (e.Key == Key.Enter)
-                { 
-                // Récupérer la fenêtre parente
-                var window = currentControl.GetVisualRoot() as Window;
-                if (window == null)
-                    return;
+                {
+                    // Récupérer la fenêtre parente
+                    var window = currentControl.GetVisualRoot() as Window;
+                    if (window == null)
+                        return;
 
-                // Trouver tous les contrôles focusables dans la fenêtre, triés par TabIndex
-                var focusableControls = window.GetVisualDescendants()
-                    .OfType<Control>()
-                    .Where(c => c.Focusable && c.IsEnabled && c.IsVisible)
-                    .OrderBy(c => c.TabIndex)
-                    .ToList();
+                    // Trouver tous les contrôles focusables dans la fenêtre, triés par TabIndex
+                    var focusableControls = window.GetVisualDescendants()
+                        .OfType<Control>()
+                        .Where(c => c.Focusable && c.IsEnabled && c.IsVisible)
+                        .OrderBy(c => c.TabIndex)
+                        .ToList();
 
-                // Trouver la position du contrôle courant
-                int index = focusableControls.IndexOf(currentControl);
-                
-                if (index == -1)
-                    return;
+                    // Trouver la position du contrôle courant
+                    int index = focusableControls.IndexOf(currentControl);
 
-                if (index == 15) // Url field, Enter trig OnAddClicked
-                    OnAddClicked(sender, e);
+                    if (index == -1)
+                        return;
 
-                // Aller au suivant (boucle)
-                int nextIndex = (index + 1) % focusableControls.Count;
-                var nextControl = focusableControls[nextIndex];
+                    if (index == 15) // Url field, Enter trig OnAddClicked
+                        OnAddClicked(sender, e);
 
-                // Mettre le focus sur le contrôle suivant
-                nextControl.Focus();
+                    // Aller au suivant (boucle)
+                    int nextIndex = (index + 1) % focusableControls.Count;
+                    var nextControl = focusableControls[nextIndex];
 
-                e.Handled = true;
+                    // Mettre le focus sur le contrôle suivant
+                    nextControl.Focus();
+
+                    e.Handled = true;
                 }
                 else if (e.Key == Key.Escape)
                 {

@@ -1,7 +1,7 @@
 using Avalonia.Threading;
-using System.Threading.Tasks;
-using System;
 using FluentAvalonia.UI.Windowing;
+using System;
+using System.Threading.Tasks;
 
 namespace BankBook
 {

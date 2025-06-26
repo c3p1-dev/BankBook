@@ -1,7 +1,7 @@
 using Avalonia.Controls;
-using System.Threading.Tasks;
-using System;
 using Avalonia.Input;
+using System;
+using System.Threading.Tasks;
 
 namespace BankBook;
 

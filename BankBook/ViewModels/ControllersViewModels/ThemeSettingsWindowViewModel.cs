@@ -1,15 +1,15 @@
-﻿using Avalonia.Controls.ApplicationLifetimes;
+﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Media;
 using Avalonia.Styling;
+using BankBook.Models;
 using FluentAvalonia.Styling;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Text.Json;
-using Avalonia;
-using System.IO;
-using BankBook.Models;
 
 namespace BankBook.ViewModels
 {

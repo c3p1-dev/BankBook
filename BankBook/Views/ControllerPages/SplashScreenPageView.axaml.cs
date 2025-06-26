@@ -1,5 +1,4 @@
 using Avalonia.Controls;
-using BankBook.ViewModels;
 
 namespace BankBook;
 

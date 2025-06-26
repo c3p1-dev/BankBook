@@ -1,7 +1,5 @@
-﻿using BankBook.Data;
-using BankBook.Data.Models;
+﻿using BankBook.Data.Models;
 using BankBook.Services;
-using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 

@@ -1,6 +1,5 @@
 ﻿using BankBook.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
 
@@ -11,7 +10,9 @@ namespace BankBook.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // TODO : add the connection string to a configuration file
-            optionsBuilder.UseSqlite("Data Source=BankBook.db");
+            var dbPath = Path.Combine(AppContext.BaseDirectory, "bankbook.db");
+            optionsBuilder.UseSqlite($"Data Source={dbPath}");
+ //           optionsBuilder.UseSqlite("Data Source=BankBook.db");
 
             base.OnConfiguring(optionsBuilder);
         }
@@ -32,7 +33,7 @@ namespace BankBook.Data
                 // TODO : implement a logger system
                 Console.WriteLine(ex.ToString());
             }
-                
+
         }
     }
 }

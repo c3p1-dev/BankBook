@@ -1,5 +1,4 @@
-﻿using BankBook.Data;
-using BankBook.Services;
+﻿using BankBook.Services;
 using System.Collections.ObjectModel;
 
 namespace BankBook.ViewModels
@@ -53,7 +52,7 @@ namespace BankBook.ViewModels
                 Swift = NewAccount.Swift,
                 IBAN = NewAccount.IBAN,
                 Description = NewAccount.Description,
-                Url = NewAccount.Url                
+                Url = NewAccount.Url
             };
 
             Accounts.Add(newAcc);
