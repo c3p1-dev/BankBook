@@ -14,7 +14,7 @@
 
 	</UserControl.Resources>
 
-	<ScrollViewer Padding="20">
+	<ScrollViewer Padding="20" MaxWidth="1500">
 		<StackPanel Spacing="20">
 
 			<StackPanel Spacing="10">

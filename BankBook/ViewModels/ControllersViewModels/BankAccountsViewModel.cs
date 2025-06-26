@@ -1,4 +1,5 @@
-﻿using BankBook.Services;
+﻿using BankBook.Data.Models;
+using BankBook.Services;
 using System.Collections.ObjectModel;
 
 namespace BankBook.ViewModels
@@ -25,13 +26,15 @@ namespace BankBook.ViewModels
         public async void LoadAccounts()
         {
             Accounts.Clear();
-            var entities = await _bankAccountService.GetBankAccountsListAsync(); // méthode à créer dans service
+            var entities = await _bankAccountService.GetBankAccountsListAsync();
             foreach (var entity in entities)
             {
                 var vm = new BankAccountViewModel()
                 {
+                    Id = entity.Id,
                     Bank = entity.Bank,
                     Name = entity.Name,
+                    Balance = entity.Balance,
                     Swift = entity.Swift,
                     IBAN = entity.IBAN,
                     Description = entity.Description,
@@ -43,7 +46,7 @@ namespace BankBook.ViewModels
 
         public BankAccountViewModel NewAccount { get; } = new();
 
-        public void AddAccount()
+        /*public void AddAccount()
         {
             var newAcc = new BankAccountViewModel()
             {
@@ -59,6 +62,43 @@ namespace BankBook.ViewModels
             SelectedAccount = newAcc;
 
             RaisePropertyChanged(nameof(NewAccount));
+        }*/
+
+        public async void DeleteAccountAsync()
+        {
+            if (SelectedAccount != null)
+            {
+                // delete the account
+                await _bankAccountService.DeleteBankAccountAsync(SelectedAccount.Id);
+                SelectedAccount = null;
+
+                // reload the list
+                LoadAccounts();
+            }
+        }
+
+        public async void UpdateAccountAsync()
+        {
+            if (SelectedAccount != null)
+            {
+                // create the model
+                BankAccount model = new BankAccount
+                {
+                    Id = SelectedAccount.Id,
+                    Bank = SelectedAccount.Bank,
+                    Name = SelectedAccount.Name,
+                    Balance = SelectedAccount.Balance,
+                    Swift = SelectedAccount.Swift,
+                    IBAN = SelectedAccount.IBAN,
+                    Description = SelectedAccount.Description,
+                    Url = SelectedAccount.Url,
+                };
+                // update the account
+                await _bankAccountService.UpdateBankAccountAsync(model);
+
+                // reload the list
+                LoadAccounts();
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ namespace BankBook.Data
             // TODO : add the connection string to a configuration file
             var dbPath = Path.Combine(AppContext.BaseDirectory, "bankbook.db");
             optionsBuilder.UseSqlite($"Data Source={dbPath}");
- //           optionsBuilder.UseSqlite("Data Source=BankBook.db");
+            //           optionsBuilder.UseSqlite("Data Source=BankBook.db");
 
             base.OnConfiguring(optionsBuilder);
         }

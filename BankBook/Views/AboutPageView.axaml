@@ -5,7 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="700"
              x:Class="BankBook.AboutPageView">
 
-	<ScrollViewer Padding="20">
+	<ScrollViewer Padding="20" MaxWidth="1500">
 
 		<StackPanel>
 			

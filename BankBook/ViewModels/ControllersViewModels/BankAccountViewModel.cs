@@ -42,13 +42,53 @@ namespace BankBook.ViewModels
         [RegularExpression("^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$", ErrorMessage = "Invalid IBAN format")]
         public string IBAN { get => _iban; set => RaiseAndSetIfChanged(ref _iban, value); }
 
+        private decimal _balance = decimal.Zero;
+        public decimal Balance { get => _balance; set => RaiseAndSetIfChanged(ref _balance, value); }
+
         public string _url = string.Empty;
         [StringLength(2083, ErrorMessage = "URL too long (max 2083 characters)")]
         public string Url { get => _url; set => RaiseAndSetIfChanged(ref _url, value); }
 
-        public override string ToString() => $"{Name} ({Bank})";
+        public string RIB { get => IbanToRib(_iban)!; }
+        public string AccountNumber { get => IbanToAccountNumber(_iban)!; }
 
-        public async Task AddAccount(BankAccount account)
+        private static string? IbanToRib(string iban)
+        {
+            // Nettoyer l'IBAN (supprimer les espaces)
+            iban = iban.Replace(" ", "").ToUpper();
+
+            // Vérifier qu'on a bien un IBAN français de 27 caractères
+            if (!iban.StartsWith("FR") || iban.Length != 27)
+                return null;
+
+            string bankCode = iban.Substring(4, 5);
+            string officeCode = iban.Substring(9, 5);
+            string accountNumber = iban.Substring(14, 11);
+            string ribKey = iban.Substring(25, 2);
+
+            return $"{bankCode} {officeCode} {accountNumber} {ribKey}";
+        }
+        private static string? IbanToAccountNumber(string iban)
+        {
+            // Nettoyer l'IBAN (supprimer les espaces)
+            iban = iban.Replace(" ", "").ToUpper();
+
+            // Vérifier qu'on a bien un IBAN français de 27 caractères
+            if (!iban.StartsWith("FR") || iban.Length != 27)
+                return null;
+
+            string bankCode = iban.Substring(4, 5);
+            string officeCode = iban.Substring(9, 5);
+            string accountNumber = iban.Substring(14, 11);
+            string ribKey = iban.Substring(25, 2);
+
+            return accountNumber;
+        }
+
+        public override string ToString() => $"{Id.ToString("D4")} - {Name} ({Bank}) - {Balance.ToString("C2")}";
+
+
+        public async Task AddAccountAsync(BankAccount account)
         {
             await _bankAccountService.AddBankAccountAsync(account);
         }

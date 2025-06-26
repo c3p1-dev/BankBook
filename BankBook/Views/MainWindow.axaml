@@ -5,8 +5,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-		d:DesignWidth="1090" Width="1090" MinWidth="960"
-		d:DesignHeight="720" Height="720" MinHeight="720"
+		d:DesignWidth="1100" Width="1100" MinWidth="1100"
+		d:DesignHeight="800" Height="800" MinHeight="800"
         x:Class="BankBook.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
 		WindowStartupLocation="CenterOwner"
@@ -20,8 +20,6 @@
 		<DockPanel Grid.Row="0">
 			<Menu DockPanel.Dock="Top">
 				<MenuItem Header="_File">
-					<MenuItem Header="_Open..." />
-					<Separator/>
 					<MenuItem Header="_Exit" Click="MenuFilesExit_Click"/>
 				</MenuItem>
 				<MenuItem Header="_Tools">

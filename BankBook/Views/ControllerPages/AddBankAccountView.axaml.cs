@@ -55,7 +55,7 @@ namespace BankBook.Views
                         Swift = vm.Swift,
                         Url = vm.Url,
                     };
-                    await vm.AddAccount(account);
+                    await vm.AddAccountAsync(account);
 
                     // Clear fields and go back to BankAccountsPage
                     ClearFields();

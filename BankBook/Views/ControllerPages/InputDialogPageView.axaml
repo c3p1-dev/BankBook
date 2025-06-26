@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="BankBook.InputDialogPageView">
-	<ScrollViewer Padding="20" >
+	<ScrollViewer Padding="20" MaxWidth="1500">
 		<StackPanel Spacing="20">
 
 			<StackPanel Spacing="10">

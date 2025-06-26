@@ -6,7 +6,12 @@ namespace BankBook.Services
 {
     public interface IBankAccountService
     {
-        Task<int> AddBankAccountAsync(BankAccount bankAccount);
         Task<IEnumerable<BankAccount>> GetBankAccountsListAsync();
+
+        Task<bool> AddBankAccountAsync(BankAccount bankAccount);
+
+        Task<bool> DeleteBankAccountAsync(int Id);
+
+        Task<bool> UpdateBankAccountAsync(BankAccount bankAccount);
     }
 }

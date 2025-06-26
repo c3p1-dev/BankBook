@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BankBook.Data.Models
@@ -33,5 +34,9 @@ namespace BankBook.Data.Models
 
         [StringLength(2083, ErrorMessage = "URL too long (max 2083 characters)")]
         public string Url { get; set; } = string.Empty;
+
+        public decimal Balance { get; set; } = decimal.Zero;
+
+        public DateOnly? LockedAt { get; set; }
     }
 }

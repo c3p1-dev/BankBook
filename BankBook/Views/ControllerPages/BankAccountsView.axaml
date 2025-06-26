@@ -9,45 +9,102 @@
 	<UserControl.DataContext>
 		<vm:BankAccountsViewModel />
 	</UserControl.DataContext>
-
-	<Border Padding="20">
-		<StackPanel>
-
-			<TextBlock Text="Registered Accounts" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
-			<ListBox ItemsSource="{Binding Accounts, Mode=TwoWay}"
-                     SelectedItem="{Binding SelectedAccount}"
-                     MinHeight="200"
-					 MaxHeight="200">
-				<ListBox.ItemTemplate>
-					<DataTemplate>
-						<TextBlock Text="{Binding}" />
-					</DataTemplate>
-				</ListBox.ItemTemplate>
-			</ListBox>
-				
-
-			<TextBlock Text="Selected Account Details" FontSize="16" FontWeight="Bold" Margin="10,20,0,10"/>
-
+	
+	<Grid RowDefinitions="0, 200, 350, 40, Auto" MaxWidth="1500">
+		
+		<Border Grid.Row="0" Padding="20">
 			<StackPanel Spacing="10">
-				<TextBlock Text="Account Name" />
-				<TextBox Text="{Binding SelectedAccount.Name}" IsReadOnly="True"/>
-
-				<TextBlock Text="Bank" />
-				<TextBox Text="{Binding SelectedAccount.Bank}" IsReadOnly="True"/>
-
-				<TextBlock Text="IBAN" />
-				<TextBox Text="{Binding SelectedAccount.IBAN}" IsReadOnly="True"/>
-
-				<TextBlock Text="SWIFT/BIC" />
-				<TextBox Text="{Binding SelectedAccount.Swift}" IsReadOnly="True"/>
-
+				<TextBlock Text="Bank Accounts"
+						   FontWeight="Bold"
+						   FontSize="24"/>
+				<Separator/>
 			</StackPanel>
+		</Border>
+		
+		<Border Grid.Row="1" Padding="40">
+			<StackPanel Margin="0 10">
+				<TextBlock Text="Select an Account" FontSize="16" FontWeight="Bold" Margin="0,20,0,10"/>
+				<ListBox ItemsSource="{Binding Accounts, Mode=TwoWay}"
+						 SelectedItem="{Binding SelectedAccount}"
+						 MinHeight="130"
+						 MaxHeight="130">
+					<ListBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding}" />
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
+				<Separator />
+			</StackPanel>
+		</Border>
+		
+		<Border Grid.Row="2" Padding="20">
+			<Grid ColumnDefinitions="2*,3*">
+				
+				<Border Padding="20" Grid.Column="0" >
+					<StackPanel Spacing="10">
+						<TextBlock Text="Selected Account Details" FontSize="16" FontWeight="Bold" Margin="10,10,0,10"/>
+						<TextBlock Text="Account Name ">
+							<TextBlock Foreground="LightCoral" Text="*" />
+						</TextBlock>
+						<TextBox Text="{Binding SelectedAccount.Name}" IsReadOnly="False" GotFocus="TextBox_GotFocus" />
 
-			<Button Content="Add Account"
-                    HorizontalAlignment="Left"
-                    Margin="0,30,0,0"
-                    Click="OnAddAccountClicked" />
+						<TextBlock Text="Bank ">
+							<TextBlock Foreground="LightCoral" Text="*" />
+						</TextBlock>
+						<TextBox Text="{Binding SelectedAccount.Bank}" IsReadOnly="False" GotFocus="TextBox_GotFocus" />
 
-		</StackPanel>
-	</Border>
+						<TextBlock Text="IBAN" />
+						<TextBox Text="{Binding SelectedAccount.IBAN}" IsReadOnly="True" GotFocus="TextBox_GotFocus" />
+
+						<TextBlock Text="SWIFT/BIC" />
+						<TextBox Text="{Binding SelectedAccount.Swift}" IsReadOnly="True" GotFocus="TextBox_GotFocus" />
+					</StackPanel>
+				</Border>
+				
+				<Border Padding="20" Grid.Column="1" Margin="0, 52">
+					<StackPanel Grid.Column="1" Spacing="10" VerticalAlignment="Top">
+						<TextBlock Text="Account Description" />
+						<TextBox Text="{Binding SelectedAccount.Description}" IsReadOnly="False" GotFocus="TextBox_GotFocus" />
+						
+						<TextBlock Text="Bank Website" />
+						<TextBox Text="{Binding SelectedAccount.Url}" IsReadOnly="False" GotFocus="TextBox_GotFocus" />
+						
+						<TextBlock Text="Account Number" />
+						<TextBox Text="{Binding SelectedAccount.AccountNumber}" IsReadOnly="True" GotFocus="TextBox_GotFocus" />
+						
+						<TextBlock Text="RIB" />
+						<TextBox Text="{Binding SelectedAccount.RIB}" IsReadOnly="True" GotFocus="TextBox_GotFocus" />
+					</StackPanel>
+				</Border>
+				
+			</Grid>
+		</Border>
+		
+		<Border Grid.Row="3" Padding="20">
+			<Separator Margin="0 30"/>
+		</Border>
+		
+		<Border Grid.Row="4" Padding="20" HorizontalAlignment="Right" Margin="0 10 100 0">
+			<StackPanel Orientation="Horizontal" Spacing="5" >
+				<Button Content="Add Account"
+					HorizontalAlignment="Left"
+					FontSize="16"
+					Click="OnAddAccountClicked" />
+				<Button Content="Save"
+					HorizontalAlignment="Left"
+					FontSize="16"
+					Click="OnSaveClicked" />
+				<Button Content="Delete"
+					HorizontalAlignment="Left"
+					FontSize="16"
+					Click="OnDeleteClicked" />
+				<Button Content="Refresh"
+					HorizontalAlignment="Left"
+					FontSize="16"
+					Click="OnRefreshClicked" />
+			</StackPanel>
+		</Border>
+		
+	</Grid>
 </UserControl>

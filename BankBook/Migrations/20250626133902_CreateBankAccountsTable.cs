@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
 #nullable disable
 
@@ -21,7 +22,9 @@ namespace BankBook.Migrations
                     Description = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
                     Swift = table.Column<string>(type: "TEXT", maxLength: 11, nullable: false),
                     IBAN = table.Column<string>(type: "TEXT", maxLength: 34, nullable: false),
-                    Url = table.Column<string>(type: "TEXT", maxLength: 2083, nullable: false)
+                    Url = table.Column<string>(type: "TEXT", maxLength: 2083, nullable: false),
+                    Balance = table.Column<decimal>(type: "TEXT", nullable: false),
+                    LockedAt = table.Column<DateOnly>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
