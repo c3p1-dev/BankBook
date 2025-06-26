@@ -19,11 +19,8 @@
 		<Border Grid.Row="1" Padding="40">
 			<Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" RowSpacing="20" Margin="0 10">
 
-
-				<!-- 2 cols dynamic grid -->
 				<Grid Grid.Row="1" ColumnDefinitions="2*,3*" ColumnSpacing="40" MaxWidth="1500">
 
-					<!-- form col -->
 					<StackPanel Grid.Column="0" Spacing="12" MaxWidth="500" Margin="0 10">
 
 						<TextBlock Text="Account Name ">
@@ -53,7 +50,6 @@
 						<TextBox Text="{Binding Url, Mode=TwoWay}" Watermark="Bank website URL" GotFocus="TextBox_GotFocus" KeyDown="TextBox_KeyDown"/>
 					</StackPanel>
 
-					<!-- help text col -->
 					<Border Grid.Column="1" Background="#0DFFFFFF" Padding="10" CornerRadius="8" Margin="0 40">
 						<TextBlock TextWrapping="Wrap" Margin="10 30 10 10">
 							Type here your bank account informations. IBAN identifies the account, and SWIFT/BIC identifies the bank.
@@ -70,10 +66,8 @@
 					</Border>
 				</Grid>
 
-				<!-- space -->
 				<Rectangle Grid.Row="2" Height="20" />
 
-				<!-- buttons section -->
 				<StackPanel Grid.Row="3"
 							Orientation="Horizontal"
 							HorizontalAlignment="Right"
