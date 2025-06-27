@@ -3,7 +3,7 @@ using BankBook.Services;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
-namespace BankBook.ViewModels
+namespace BankBook.ViewModels.ControllersViewModels
 {
     public class BankAccountViewModel : ViewModelBase
     {

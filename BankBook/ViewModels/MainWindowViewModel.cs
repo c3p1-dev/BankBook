@@ -1,6 +1,5 @@
 ﻿using Avalonia.Controls;
 using BankBook.Models;
-using BankBook.Views;
 using BankBook.Views.ControllerPages;
 
 namespace BankBook.ViewModels
@@ -26,8 +25,8 @@ namespace BankBook.ViewModels
         private InputDialogPageView _textInputDialogPage = new();
         private ConverterUsagePageView _converterUsagePage = new();
         private TaskDialogPageView _taskDialogPage = new();
-        private BankAccountsView _bankAccountsPage = new();
-        private AddBankAccountView _addBankAccountPage = new();
+        private BankAccountsPageView _bankAccountsPage = new();
+        private AddBankAccountPageView _addBankAccountPage = new();
         #endregion
 
         public MainWindowViewModel()

@@ -4,12 +4,13 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using BankBook.ViewModels;
+using BankBook.ViewModels.ControllersViewModels;
 
 namespace BankBook.Views.ControllerPages
 {
-    public partial class BankAccountsView : UserControl
+    public partial class BankAccountsPageView : UserControl
     {
-        public BankAccountsView()
+        public BankAccountsPageView()
         {
             InitializeComponent();
 

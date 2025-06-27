@@ -2,7 +2,7 @@
 using BankBook.Services;
 using System.Collections.ObjectModel;
 
-namespace BankBook.ViewModels
+namespace BankBook.ViewModels.ControllersViewModels
 {
     public class BankAccountsViewModel : ViewModelBase
     {

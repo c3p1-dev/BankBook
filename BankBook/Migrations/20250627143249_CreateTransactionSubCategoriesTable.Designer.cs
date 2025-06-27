@@ -3,6 +3,7 @@ using System;
 using BankBook.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankBook.Migrations
 {
     [DbContext(typeof(BankBookContext))]
-    partial class BankBookContextModelSnapshot : ModelSnapshot
+    [Migration("20250627143249_CreateTransactionSubCategoriesTable")]
+    partial class CreateTransactionSubCategoriesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.6");

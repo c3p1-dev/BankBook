@@ -5,15 +5,16 @@ using Avalonia.Threading;
 using Avalonia.VisualTree;
 using BankBook.Data.Models;
 using BankBook.ViewModels;
+using BankBook.ViewModels.ControllersViewModels;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace BankBook.Views
+namespace BankBook.Views.ControllerPages
 {
-    public partial class AddBankAccountView : UserControl
+    public partial class AddBankAccountPageView : UserControl
     {
-        public AddBankAccountView()
+        public AddBankAccountPageView()
         {
             InitializeComponent();
 

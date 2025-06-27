@@ -29,6 +29,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Compile Update="Views\ControllerPages\AddBankAccountPageView.axaml.cs">
+		  <DependentUpon>AddBankAccountPageView.axaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ControllerPages\BankAccountsPageView.axaml.cs">
+		  <DependentUpon>BankAccountsPageView.axaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\ControllerPages\CategoriesPageView.axaml.cs">
+		  <DependentUpon>CategoriesPageView.axaml</DependentUpon>
+		</Compile>
 		<Compile Update="Views\SplashScreenWindow.axaml.cs">
 			<DependentUpon>SplashScreenWindow.axaml</DependentUpon>
 		</Compile>
