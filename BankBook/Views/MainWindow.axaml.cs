@@ -97,7 +97,7 @@ namespace BankBook.Views
             if (result)
             {
                 //Kill the app
-                await ProgressDialog.ShowProgressDialogWithDurationTime(owner, "Closing", "The application is closing ...", 3);
+                //await ProgressDialog.ShowProgressDialogWithDurationTime(owner, "Closing", "The application is closing ...", 3);
                 Environment.Exit(0);
             }
         }
@@ -114,7 +114,8 @@ namespace BankBook.Views
 
         private void MenuFilesExit_Click(object? sender, RoutedEventArgs e)
         {
-            Close();
+            // kill the app
+            Environment.Exit(0);
         }
 
 
