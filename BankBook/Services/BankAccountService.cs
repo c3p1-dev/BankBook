@@ -10,7 +10,7 @@ namespace BankBook.Services
     public class BankAccountService : IBankAccountService
     {
         private readonly BankBookContext _dbContext;
-        public BankAccountService() => _dbContext = new BankBookContext();
+        public BankAccountService(BankBookContext dbContext) => _dbContext = dbContext;
 
         public async Task<IEnumerable<BankAccount>> GetBankAccountsListAsync()
         {

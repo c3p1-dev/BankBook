@@ -1,4 +1,5 @@
-﻿using BankBook.Data.Models;
+﻿using BankBook.Data;
+using BankBook.Data.Models;
 using BankBook.Services;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
@@ -10,7 +11,9 @@ namespace BankBook.ViewModels.ControllersViewModels
         private IBankAccountService _bankAccountService;
         public BankAccountViewModel()
         {
-            _bankAccountService = new BankAccountService();
+            // init services for the ViewModel
+            BankBookContext db = new BankBookContext();
+            _bankAccountService = new BankAccountService(db);
         }
         public int Id { get; set; }
 

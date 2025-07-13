@@ -1,4 +1,5 @@
-﻿using BankBook.Data.Models;
+﻿using BankBook.Data;
+using BankBook.Data.Models;
 using BankBook.Services;
 using System.Collections.ObjectModel;
 
@@ -9,9 +10,11 @@ namespace BankBook.ViewModels.ControllersViewModels
         private readonly IBankAccountService _bankAccountService;
         public BankAccountsViewModel()
         {
-            _bankAccountService = new BankAccountService();
+            // init services for the ViewModel
+            BankBookContext db = new BankBookContext();
+            _bankAccountService = new BankAccountService(db);
 
-            // Load the account list
+            // load the account list
             LoadAccounts();
         }
         public ObservableCollection<BankAccountViewModel> Accounts { get; } = new();
@@ -45,24 +48,6 @@ namespace BankBook.ViewModels.ControllersViewModels
         }
 
         public BankAccountViewModel NewAccount { get; } = new();
-
-        /*public void AddAccount()
-        {
-            var newAcc = new BankAccountViewModel()
-            {
-                Bank = NewAccount.Bank,
-                Name = NewAccount.Name,
-                Swift = NewAccount.Swift,
-                IBAN = NewAccount.IBAN,
-                Description = NewAccount.Description,
-                Url = NewAccount.Url
-            };
-
-            Accounts.Add(newAcc);
-            SelectedAccount = newAcc;
-
-            RaisePropertyChanged(nameof(NewAccount));
-        }*/
 
         public async void DeleteAccountAsync()
         {
