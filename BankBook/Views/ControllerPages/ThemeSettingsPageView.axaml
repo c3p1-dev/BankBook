@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
 			 xmlns:ui="using:FluentAvalonia.UI.Controls"
+			 xmlns:uia="using:Avalonia.Controls"
 			 xmlns:vm="using:BankBook.ViewModels"
 			 x:DataType="vm:ThemeSettingsWindowViewModel"
              x:Class="BankBook.ThemeSettingsPageView"
@@ -205,13 +206,9 @@
                                            VerticalAlignment="Center"
                                            DockPanel.Dock="Left" />
 
-								<ui:ColorPickerButton Color="{Binding CustomAccentColor}"
-                                                      IsMoreButtonVisible="True"
-                                                      UseSpectrum="True"
-                                                      UseColorWheel="False"
-                                                      UseColorTriangle="False"
-                                                      UseColorPalette="False"
-                                                      IsCompact="True" ShowAcceptDismissButtons="True"
+								
+								<uia:ColorPicker Color="{Binding CustomAccentColor}"
+                                                      
                                                       DockPanel.Dock="Right"/>
 							</DockPanel>
 						</StackPanel>
