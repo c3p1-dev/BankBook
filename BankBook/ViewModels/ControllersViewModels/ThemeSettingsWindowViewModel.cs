@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.Json;
+using ReactiveUI;
 
 namespace BankBook.ViewModels
 {
@@ -199,8 +200,8 @@ namespace BankBook.ViewModels
                             _customAccentColor = (Color)curColor;
                             _listBoxColor = _customAccentColor;
 
-                            RaisePropertyChanged(nameof(CustomAccentColor));
-                            RaisePropertyChanged(nameof(ListBoxColor));
+                            this.RaisePropertyChanged(nameof(CustomAccentColor));
+                            this.RaisePropertyChanged(nameof(ListBoxColor));
                         }
                         else
                         {
@@ -211,8 +212,8 @@ namespace BankBook.ViewModels
                     {
                         _customAccentColor = default;
                         _listBoxColor = default;
-                        RaisePropertyChanged(nameof(CustomAccentColor));
-                        RaisePropertyChanged(nameof(ListBoxColor));
+                        this.RaisePropertyChanged(nameof(CustomAccentColor));
+                        this.RaisePropertyChanged(nameof(ListBoxColor));
                         UpdateAppAccentColor(null);
                     }
                 }
@@ -228,13 +229,13 @@ namespace BankBook.ViewModels
                 {
                     RaiseAndSetIfChanged(ref _listBoxColor, (Color)value);
                     _customAccentColor = value.Value;
-                    RaisePropertyChanged(nameof(CustomAccentColor));
+                    this.RaisePropertyChanged(nameof(CustomAccentColor));
                     UpdateAppAccentColor(value.Value);
                 }
                 else
                 {
                     _listBoxColor = null;
-                    RaisePropertyChanged(nameof(CustomAccentColor));
+                    this.RaisePropertyChanged(nameof(CustomAccentColor));
                     UpdateAppAccentColor(null);
                 }
             }
@@ -248,7 +249,7 @@ namespace BankBook.ViewModels
                 if (RaiseAndSetIfChanged(ref _customAccentColor, value))
                 {
                     _listBoxColor = value;
-                    RaisePropertyChanged(nameof(ListBoxColor));
+                    this.RaisePropertyChanged(nameof(ListBoxColor));
                     UpdateAppAccentColor(value);
                 }
             }

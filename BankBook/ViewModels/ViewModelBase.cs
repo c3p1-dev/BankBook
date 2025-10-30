@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
+using ReactiveUI;
 
 namespace BankBook.ViewModels
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase : ReactiveObject
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
         protected string GetAssemblyResource(string name)
         {
             using (var stream = AssetLoader.Open(new Uri(name)))
@@ -24,15 +24,10 @@ namespace BankBook.ViewModels
             if (!EqualityComparer<T>.Default.Equals(field, value))
             {
                 field = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                this.RaisePropertyChanged(propertyName);
                 return true;
             }
             return false;
-        }
-
-        protected void RaisePropertyChanged(string propName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
     }
 }
