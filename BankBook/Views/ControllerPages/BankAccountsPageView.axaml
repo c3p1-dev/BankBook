@@ -62,7 +62,7 @@
 					</StackPanel>
 				</Border>
 				
-				<Border Padding="20" Grid.Column="1" Margin="0, 52">
+				<Border Padding="20" Grid.Column="1" Margin="0, 56">
 					<StackPanel Grid.Column="1" Spacing="10" VerticalAlignment="Top">
 						<TextBlock Text="Account Description" />
 						<TextBox Text="{Binding SelectedAccount.Description}" IsReadOnly="False" GotFocus="TextBox_GotFocus" />

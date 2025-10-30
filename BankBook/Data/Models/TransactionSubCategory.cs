@@ -7,12 +7,12 @@ namespace BankBook.Data.Models
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Sub-Category Code is required")]
+        [Required(ErrorMessage = "SubCategory Code is required")]
         [StringLength(10, ErrorMessage = "Sub-Category Code is at most 10 characters")]
         [RegularExpression("^[A-Z]{1,10}$")]
         public string Code { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Sub-Category Name is required")]
+        [Required(ErrorMessage = "SubCategory Name is required")]
         [StringLength(10, ErrorMessage = "Sub-Category Name is at most 100 characters")]
         [RegularExpression("^[A-Z]{1,100}$")]
         public string Name { get; set; } = string.Empty;
