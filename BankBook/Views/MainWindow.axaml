@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
 		d:DesignWidth="1100" Width="1100" MinWidth="1100"
-		d:DesignHeight="800" Height="800" MinHeight="800"
+		d:DesignHeight="800" Height="900" MinHeight="900"
         x:Class="BankBook.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
 		WindowStartupLocation="CenterOwner"

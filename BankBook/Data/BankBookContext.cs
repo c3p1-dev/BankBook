@@ -18,8 +18,8 @@ namespace BankBook.Data
         }
 
         public DbSet<BankAccount> BankAccounts => Set<BankAccount>();
-        public DbSet<TransactionCategory> TransactionCategories => Set<TransactionCategory>();
-        public DbSet<TransactionSubCategory> TransactionSubCategories => Set<TransactionSubCategory>();
+        //public DbSet<TransactionCategory> TransactionCategories => Set<TransactionCategory>();
+        //public DbSet<TransactionSubCategory> TransactionSubCategories => Set<TransactionSubCategory>();
 
         public static void InitDatabase()
         {

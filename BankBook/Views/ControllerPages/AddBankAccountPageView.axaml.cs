@@ -4,6 +4,7 @@ using Avalonia.Interactivity;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
 using BankBook.Data.Models;
+using BankBook.Utils;
 using BankBook.ViewModels;
 using BankBook.ViewModels.ControllersViewModels;
 using System.Collections.Generic;
@@ -37,7 +38,7 @@ namespace BankBook.Views.ControllerPages
                 // TODO : validate data and save
                 var context = new ValidationContext(vm, serviceProvider: null, items: null);
                 var results = new List<ValidationResult>();
-
+                // probleme ici
                 bool isValid = Validator.TryValidateObject(vm, context, results, validateAllProperties: true);
 
                 if (!isValid)
@@ -46,21 +47,45 @@ namespace BankBook.Views.ControllerPages
                 }
                 else
                 {
-                    // Add the account to the database
-                    BankAccount account = new BankAccount
+                    // check if account code is unique
+                    if (await vm.IsAccountCodeUniqueAsync(vm.Code))
                     {
-                        Bank = vm.Bank,
-                        Name = vm.Name,
-                        Description = vm.Description,
-                        IBAN = vm.IBAN,
-                        Swift = vm.Swift,
-                        Url = vm.Url,
-                    };
-                    await vm.AddAccountAsync(account);
+                        // Add the account to the database
+                        BankAccount account = new BankAccount
+                        {
+                            Bank = vm.Bank,
+                            Name = vm.Name,
+                            Code = vm.Code,
+                            Description = vm.Description,
+                            IBAN = vm.IBAN,
+                            Swift = vm.Swift,
+                            Url = vm.Url,
+                        };
+                        await vm.AddAccountAsync(account);
 
-                    // Clear fields and go back to BankAccountsPage
-                    ClearFields();
-                    MainWindowViewModel.InstanceMainWindowVM!.NavigateToPage(Models.PagesEnum.BankAccountsPage);
+                        var owner = VisualRoot as Window;
+                        if (owner is null)
+                        {
+                            return;
+                        }
+                        await TaskDialogHelper.ShowTaskDialogAsync(owner, "Success", $"The Account {vm.Code} - {vm.Name} has been created", TaskDialogType.Success);
+                        // Clear fields and go back to BankAccountsPage
+                        ClearFields();
+                        MainWindowViewModel.InstanceMainWindowVM!.NavigateToPage(Models.PagesEnum.BankAccountsPage);
+                    }
+                    else // account code already exists
+                    {
+                        // Faut mettre quoi ici pour ajouter un message d'erreur de validation qui dit que le code compte est pas unique ?
+                        var owner = VisualRoot as Window;
+                        if (owner is null)
+                        {
+                            return;
+                        }
+
+                        // Show an error dialog
+                        await TaskDialogHelper.ShowTaskDialogAsync(owner, "Error", $"The Account Code {vm.Code} already exists", TaskDialogType.Error);
+                    }
+
                 }
             }
         }
@@ -120,6 +145,7 @@ namespace BankBook.Views.ControllerPages
             {
                 vm.Bank = "My Bank";
                 vm.Name = "My Account";
+                vm.Code = "MYAC";
                 vm.Description = string.Empty;
                 vm.Url = string.Empty;
                 vm.IBAN = "FR7630006000011234567890189";

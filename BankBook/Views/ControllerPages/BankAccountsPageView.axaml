@@ -10,7 +10,7 @@
 		<vm:BankAccountsViewModel />
 	</UserControl.DataContext>
 	
-	<Grid RowDefinitions="0, 200, 350, 40, Auto" MaxWidth="1500">
+	<Grid RowDefinitions="0, 200, 450, 40, Auto" MaxWidth="1500">
 		
 		<Border Grid.Row="0" Padding="20">
 			<StackPanel Spacing="10">
@@ -44,37 +44,47 @@
 				<Border Padding="20" Grid.Column="0" >
 					<StackPanel Spacing="10">
 						<TextBlock Text="Selected Account Details" FontSize="16" FontWeight="Bold" Margin="10,10,0,10"/>
+
 						<TextBlock Text="Account Name ">
 							<TextBlock Foreground="LightCoral" Text="*" />
 						</TextBlock>
 						<TextBox Text="{Binding SelectedAccount.Name}" IsReadOnly="False" GotFocus="TextBox_GotFocus" />
 
-						<TextBlock Text="Bank ">
-							<TextBlock Foreground="LightCoral" Text="*" />
+						<TextBlock Text="Account Code">
+							<TextBlock Foreground="LightCoral" Text="*"/>
 						</TextBlock>
+						<TextBox Text="{Binding SelectedAccount.Code}" GotFocus="TextBox_GotFocus" />
+
+						<TextBlock Text="Bank "/>
 						<TextBox Text="{Binding SelectedAccount.Bank}" IsReadOnly="False" GotFocus="TextBox_GotFocus" />
 
 						<TextBlock Text="IBAN" />
-						<TextBox Text="{Binding SelectedAccount.IBAN}" IsReadOnly="True" GotFocus="TextBox_GotFocus" />
+						<TextBox Text="{Binding SelectedAccount.IBAN}" IsReadOnly="False" GotFocus="TextBox_GotFocus" />
 
 						<TextBlock Text="SWIFT/BIC" />
-						<TextBox Text="{Binding SelectedAccount.Swift}" IsReadOnly="True" GotFocus="TextBox_GotFocus" />
+						<TextBox Text="{Binding SelectedAccount.Swift}" IsReadOnly="False" GotFocus="TextBox_GotFocus" />
 					</StackPanel>
 				</Border>
 				
-				<Border Padding="20" Grid.Column="1" Margin="0, 56">
-					<StackPanel Grid.Column="1" Spacing="10" VerticalAlignment="Top">
-						<TextBlock Text="Account Description" />
+				<Border Padding="20" Grid.Column="1">
+					<StackPanel Spacing="10">
+						<TextBlock Text="{Binding SelectedAccount.Id}" FontSize="16" FontWeight="Bold" Margin="10,10,0,10"/>
+
+						<TextBlock Text="Account Description">
+							<TextBlock Foreground="LightCoral"></TextBlock>
+						</TextBlock>
 						<TextBox Text="{Binding SelectedAccount.Description}" IsReadOnly="False" GotFocus="TextBox_GotFocus" />
 						
-						<TextBlock Text="Bank Website" />
+						<TextBlock Text="Bank Website">
+							<TextBlock Foreground="LightCoral"></TextBlock>
+						</TextBlock>
 						<TextBox Text="{Binding SelectedAccount.Url}" IsReadOnly="False" GotFocus="TextBox_GotFocus" />
 						
 						<TextBlock Text="Account Number" />
-						<TextBox Text="{Binding SelectedAccount.AccountNumber}" IsReadOnly="True" GotFocus="TextBox_GotFocus" />
+						<TextBox Text="{Binding SelectedAccount.AccountNumber}" IsReadOnly="False" GotFocus="TextBox_GotFocus" />
 						
 						<TextBlock Text="RIB" />
-						<TextBox Text="{Binding SelectedAccount.RIB}" IsReadOnly="True" GotFocus="TextBox_GotFocus" />
+						<TextBox Text="{Binding SelectedAccount.RIB}" IsReadOnly="False" GotFocus="TextBox_GotFocus" />
 					</StackPanel>
 				</Border>
 				

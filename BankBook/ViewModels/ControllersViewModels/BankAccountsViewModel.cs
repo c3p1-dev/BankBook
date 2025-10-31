@@ -2,6 +2,8 @@
 using BankBook.Data.Models;
 using BankBook.Services;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BankBook.ViewModels.ControllersViewModels
 {
@@ -35,6 +37,7 @@ namespace BankBook.ViewModels.ControllersViewModels
                 var vm = new BankAccountViewModel()
                 {
                     Id = entity.Id,
+                    Code = entity.Code,
                     Bank = entity.Bank,
                     Name = entity.Name,
                     Balance = entity.Balance,
@@ -70,6 +73,7 @@ namespace BankBook.ViewModels.ControllersViewModels
                 BankAccount model = new BankAccount
                 {
                     Id = SelectedAccount.Id,
+                    Code = SelectedAccount.Code,
                     Bank = SelectedAccount.Bank,
                     Name = SelectedAccount.Name,
                     Balance = SelectedAccount.Balance,
@@ -84,6 +88,20 @@ namespace BankBook.ViewModels.ControllersViewModels
                 // reload the list
                 LoadAccounts();
             }
+        }
+
+        public async Task<bool> IsSelectedAccountCodeUniqueAsync()
+        {
+            bool result = await _bankAccountService.IsAccountCodeUniqueAsync(SelectedAccount!.Code);
+
+            if (!result)
+            {
+                // check if selected account is the matching code
+                var accounts = await _bankAccountService.GetBankAccountsListAsync();
+                return accounts.Where(x => x.Id == SelectedAccount.Id && x.Code == SelectedAccount.Code).Any();
+            }
+            else
+                return result;
         }
     }
 }

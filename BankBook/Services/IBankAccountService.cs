@@ -1,4 +1,5 @@
 ﻿using BankBook.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,8 +11,10 @@ namespace BankBook.Services
 
         Task<bool> AddBankAccountAsync(BankAccount bankAccount);
 
-        Task<bool> DeleteBankAccountAsync(int Id);
+        Task<bool> DeleteBankAccountAsync(Guid Id);
 
         Task<bool> UpdateBankAccountAsync(BankAccount bankAccount);
+
+        Task<bool> IsAccountCodeUniqueAsync(string accountCode);
     }
 }

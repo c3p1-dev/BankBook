@@ -13,7 +13,7 @@ namespace BankBook.Services
         private readonly BankBookContext _dbContext;
         public TransactionCategoryService(BankBookContext dbContext) => _dbContext = dbContext;
 
-        public Task<bool> AddTransactionCategoryAsync(TransactionCategory transactionCategory)
+/*        public Task<bool> AddTransactionCategoryAsync(TransactionCategory transactionCategory)
         {
             throw new NotImplementedException();
         }
@@ -36,5 +36,6 @@ namespace BankBook.Services
 
             return result;
         }
+*/
     }
 }

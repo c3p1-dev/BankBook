@@ -1,6 +1,7 @@
 ﻿using BankBook.Data;
 using BankBook.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,13 +23,14 @@ namespace BankBook.Services
         public async Task<bool> AddBankAccountAsync(BankAccount bankAccount)
         {
             // add bankAccount
+            bankAccount.Id = Guid.NewGuid();
             _dbContext.BankAccounts.Add(bankAccount);
             int result = await _dbContext.SaveChangesAsync();
 
             return result == 1;
         }
 
-        public async Task<bool> DeleteBankAccountAsync(int Id)
+        public async Task<bool> DeleteBankAccountAsync(Guid Id)
         {
             var account = await _dbContext.BankAccounts.Where(x => x.Id == Id).FirstAsync();
             _dbContext.BankAccounts.Remove(account);
@@ -41,6 +43,7 @@ namespace BankBook.Services
         {
             var account = await _dbContext.BankAccounts.Where(x => x.Id == bankAccount.Id).FirstAsync();
             account.Name = bankAccount.Name;
+            account.Code = bankAccount.Code;
             account.Bank = bankAccount.Bank;
             account.Balance = bankAccount.Balance;
             account.Name = bankAccount.Name;
@@ -56,6 +59,13 @@ namespace BankBook.Services
             int result = await _dbContext.SaveChangesAsync();
 
             return result == 1;
+        }
+
+        public async Task<bool> IsAccountCodeUniqueAsync(string accountCode)
+        {
+            bool result = await _dbContext.BankAccounts.AnyAsync(x => x.Code == accountCode);
+
+            return !result;
         }
     }
 }
