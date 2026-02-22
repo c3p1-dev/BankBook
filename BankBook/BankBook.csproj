@@ -13,27 +13,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Avalonia" Version="11.3.11" />
-		<PackageReference Include="Avalonia.Controls.ColorPicker" Version="11.3.11" />
-		<PackageReference Include="Avalonia.Desktop" Version="11.3.11" />
-		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.11" />
+		<PackageReference Include="Avalonia" Version="11.3.12" />
+		<PackageReference Include="Avalonia.Controls.ColorPicker" Version="11.3.12" />
+		<PackageReference Include="Avalonia.Desktop" Version="11.3.12" />
+		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.12" />
 		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.3.11" />
-		<PackageReference Include="FluentAvaloniaUI" Version="2.4.1" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.2" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.2">
+		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.3.12" />
+		<PackageReference Include="FluentAvaloniaUI" Version="2.5.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.3">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.2" />
-		<PackageReference Include="ReactiveUI.Avalonia" Version="11.3.8" />
-		<PackageReference Include="System.CodeDom" Version="10.0.2" />
-		<PackageReference Include="System.Composition" Version="10.0.2" />
-		<PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.2" />
-		<PackageReference Include="System.Diagnostics.EventLog" Version="10.0.2" />
-		<PackageReference Include="System.Reflection.MetadataLoadContext" Version="10.0.2" />
-		<PackageReference Include="System.Resources.Extensions" Version="10.0.2" />
-		<PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.3" />
+		<PackageReference Include="ReactiveUI.Avalonia" Version="11.4.3" />
+		<PackageReference Include="System.CodeDom" Version="10.0.3" />
+		<PackageReference Include="System.Composition" Version="10.0.3" />
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.3" />
+		<PackageReference Include="System.Diagnostics.EventLog" Version="10.0.3" />
+		<PackageReference Include="System.Reflection.MetadataLoadContext" Version="10.0.3" />
+		<PackageReference Include="System.Resources.Extensions" Version="10.0.3" />
+		<PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
