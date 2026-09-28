@@ -3,6 +3,9 @@
 *.d
 bankbook
 
+# Databases
+*.db
+
 # IDE
 .vscode/
 .idea/
