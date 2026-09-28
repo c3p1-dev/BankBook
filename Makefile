@@ -28,4 +28,7 @@ ${OBJDIR}/${f:T:R}.o: ${f}
 clean:
 	rm -rf ${OBJDIR} ${OUT}
 
+run: $(OUT)
+	./$(OUT)
+
 .PHONY: all clean

@@ -25,4 +25,7 @@ $(OBJDIR):
 clean:
 	rm -rf $(OBJDIR) $(OUT)
 
+run: $(OUT)
+	./$(OUT)
+
 .PHONY: all clean
