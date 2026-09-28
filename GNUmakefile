@@ -1,27 +1,33 @@
-CXX      ?= c++
-CXXFLAGS  = -O2 -Wall -std=c++20 -Iinclude -MMD -MP
+CXX=		c++
+CXXFLAGS=	-O2 -Wall -std=c++20 -Iinclude -I/usr/local/include -MMD -MP
+LDFLAGS=	-L/usr/local/lib
+LIBS=		-lsqlite3
 
-OUT       = bankbook
-SRCDIR    = src
-OBJDIR    = build
+OUT=		bankbook
+SRCDIR=		src
+OBJDIR=		build
 
-SRCS      = $(wildcard $(SRCDIR)/*.cpp)
-OBJS      = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SRCS))
+SRCS!=		ls ${SRCDIR}/*.cpp
+OBJS=		${SRCS:T:R:@f@${OBJDIR}/${f}.o@}
 
-all: $(OUT)
+all: ${OUT}
 
-$(OUT): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
+${OUT}: ${OBJS}
+	${CXX} ${CXXFLAGS} ${LDFLAGS} -o ${.TARGET} ${OBJS} ${LIBS}
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+# Une règle par source : build/foo.o <- src/foo.cpp
+.for f in ${SRCS}
+${OBJDIR}/${f:T:R}.o: ${f}
+	@mkdir -p ${.TARGET:H}
+	${CXX} ${CXXFLAGS} -c ${f} -o ${.TARGET}
+.endfor
 
-$(OBJDIR):
-	mkdir -p $@
-
--include $(OBJS:.o=.d)
+# Dépendances sur les en-têtes (fichiers .d générés par -MMD)
+.for o in ${OBJS}
+.sinclude "${o:R}.d"
+.endfor
 
 clean:
-	rm -rf $(OBJDIR) $(OUT)
+	rm -rf ${OBJDIR} ${OUT}
 
 .PHONY: all clean
