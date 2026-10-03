@@ -6,15 +6,16 @@ OUT       = bankbook
 SRCDIR    = src
 OBJDIR    = build
 
-SRCS      = $(wildcard $(SRCDIR)/*.cpp)
-OBJS      = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SRCS))
+SRCS     = $(shell find $(SRCDIR) -type f -name '*.cpp')
+OBJS     = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SRCS))
 
 all: $(OUT)
 
 $(OUT): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LDLIBS)
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJDIR):
@@ -25,7 +26,7 @@ $(OBJDIR):
 clean:
 	rm -rf $(OBJDIR) $(OUT)
 
-run: $(OUT)
-	./$(OUT)
+run: ${OUT}
+	./${OUT}
 
-.PHONY: all clean
+.PHONY: all clean run

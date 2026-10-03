@@ -1,14 +1,15 @@
-CXX=		c++
-CXXFLAGS=	-O2 -Wall -std=c++20 -Iinclude -I/usr/local/include -MMD -MP
-LDFLAGS=	-L/usr/local/lib
-LIBS=		-lsqlite3
+CXX=        c++
 
-OUT=		bankbook
-SRCDIR=		src
-OBJDIR=		build
+CXXFLAGS=   -O2 -Wall -std=c++20 -Iinclude -I/usr/local/include -MMD -MP
+LDFLAGS=    -L/usr/local/lib
+LIBS=       -lsqlite3
 
-SRCS!=		ls ${SRCDIR}/*.cpp
-OBJS=		${SRCS:T:R:@f@${OBJDIR}/${f}.o@}
+OUT=        bankbook
+SRCDIR=     src
+OBJDIR=     build
+
+SRCS!=      find ${SRCDIR} -type f -name '*.cpp'
+OBJS=       ${SRCS:S#${SRCDIR}/#${OBJDIR}/:S/.cpp$/.o/}
 
 all: ${OUT}
 
@@ -16,9 +17,9 @@ ${OUT}: ${OBJS}
 	${CXX} ${CXXFLAGS} ${LDFLAGS} -o ${.TARGET} ${OBJS} ${LIBS}
 
 .for f in ${SRCS}
-${OBJDIR}/${f:T:R}.o: ${f}
+${OBJDIR}/${f:S#${SRCDIR}/##:S/.cpp$/.o/}: ${f}
 	@mkdir -p ${.TARGET:H}
-	${CXX} ${CXXFLAGS} -c ${f} -o ${.TARGET}
+	${CXX} ${CXXFLAGS} -c ${.ALLSRC} -o ${.TARGET}
 .endfor
 
 .for o in ${OBJS}
@@ -28,7 +29,7 @@ ${OBJDIR}/${f:T:R}.o: ${f}
 clean:
 	rm -rf ${OBJDIR} ${OUT}
 
-run: $(OUT)
-	./$(OUT)
+run: ${OUT}
+	./${OUT}
 
-.PHONY: all clean
+.PHONY: all clean run
