@@ -20,4 +20,4 @@ private:
     std::map<std::string, std::string> data_;
 };
 
-#endif
+#endif  // CONFIG_H
