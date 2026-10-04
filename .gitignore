@@ -1,0 +1,14 @@
+# Build artifacts
+*.o
+*.d
+cpp_template
+
+# Databases
+*.db
+
+# IDE
+.vscode/
+.idea/
+
+# MacOS
+.DS_Store
