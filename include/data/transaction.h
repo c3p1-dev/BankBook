@@ -12,8 +12,8 @@ public:
     std::uint64_t id() const;
     void id(std::uint64_t transaction_id);
 
-    const std::string& account_code() const;
-    void account_code(std::string code);
+    std::uint64_t account_id() const;
+    void account_id(std::uint64_t acc_id);
 
     const std::string& label() const;
     void label(std::string transaction_label);
@@ -44,7 +44,7 @@ public:
 
 private:
     std::uint64_t id_{0};
-    std::string account_code_;
+    std::uint64_t account_id_{0};
     std::string label_;
     std::optional<std::string> note_;
     std::optional<std::string> payment_method_;

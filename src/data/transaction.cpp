@@ -12,13 +12,13 @@ void transaction::id(std::uint64_t transaction_id)
     id_ = transaction_id;
 }
 
-const std::string& transaction::account_code() const
+std::uint64_t transaction::account_id() const
 {
-    return account_code_;
+    return account_id_;
 }
-void transaction::account_code(std::string code)
+void transaction::account_id(std::uint64_t acc_id)
 {
-    account_code_ = std::move(code);
+    account_id_ = acc_id;
 }
 
 const std::string& transaction::label() const
