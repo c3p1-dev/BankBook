@@ -1,6 +1,6 @@
-#include <utility>
-
 #include "data/account.h"
+
+#include <utility>
 
 // account class implementation
 std::uint64_t account::id() const
