@@ -21,6 +21,15 @@ void transaction::account_id(std::uint64_t acc_id)
     account_id_ = acc_id;
 }
 
+std::optional<std::uint64_t> transaction::category_id() const
+{
+    return category_id_;
+}
+void transaction::category_id(std::optional<std::uint64_t> cat_id)
+{
+    category_id_ = cat_id;
+}
+
 const std::string& transaction::label() const
 {
     return label_;

@@ -15,6 +15,9 @@ public:
     std::uint64_t account_id() const;
     void account_id(std::uint64_t acc_id);
 
+    std::optional<std::uint64_t> category_id() const;
+    void category_id(std::optional<std::uint64_t> cat_id);
+
     const std::string& label() const;
     void label(std::string transaction_label);
 
@@ -45,6 +48,7 @@ public:
 private:
     std::uint64_t id_{0};
     std::uint64_t account_id_{0};
+    std::optional<std::uint64_t> category_id_;
     std::string label_;
     std::optional<std::string> note_;
     std::optional<std::string> payment_method_;
@@ -60,10 +64,11 @@ private:
 
 /*
     SQL query to create the table
-    
+
     CREATE TABLE IF NOT EXISTS transactions (
         id              INTEGER PRIMARY KEY,
-        account_id      INTEGER NOT NULL REFERENCES account(id) ON DELETE RESTRICT,
+        account_id      INTEGER NOT NULL REFERENCES accounts(id) ON DELETE RESTRICT,
+        category_id     INTEGER REFERENCES categories(id) ON DELETE RESTRICT,  -- NULL = non classée
         label           TEXT NOT NULL,
         note            TEXT,
         payment_method  TEXT,
@@ -75,9 +80,12 @@ private:
             CHECK (value_date IS NULL
                 OR value_date GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),
         is_reconciled   INTEGER NOT NULL DEFAULT 0 CHECK (is_reconciled IN (0, 1)),
-        amount          INTEGER NOT NULL        -- centimes, signé (crédit > 0, débit < 0)
+        amount          INTEGER NOT NULL    -- centimes, signé (crédit > 0, débit < 0)
     );
 
     CREATE INDEX IF NOT EXISTS transactions_account_date
         ON transactions(account_id, accounting_date);
+
+    CREATE INDEX IF NOT EXISTS transactions_category
+        ON transactions(category_id);
 */
