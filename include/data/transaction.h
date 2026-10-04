@@ -57,3 +57,27 @@ private:
 };
 
 #endif  // TRANSACTION_H
+
+/*
+    SQL query to create the table
+    
+    CREATE TABLE IF NOT EXISTS transactions (
+        id              INTEGER PRIMARY KEY,
+        account_id      INTEGER NOT NULL REFERENCES account(id) ON DELETE RESTRICT,
+        label           TEXT NOT NULL,
+        note            TEXT,
+        payment_method  TEXT,
+        check_number    TEXT,
+        created_at      INTEGER NOT NULL,   -- secondes depuis l'epoch
+        accounting_date TEXT NOT NULL
+            CHECK (accounting_date GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),
+        value_date      TEXT
+            CHECK (value_date IS NULL
+                OR value_date GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),
+        is_reconciled   INTEGER NOT NULL DEFAULT 0 CHECK (is_reconciled IN (0, 1)),
+        amount          INTEGER NOT NULL        -- centimes, signé (crédit > 0, débit < 0)
+    );
+
+    CREATE INDEX IF NOT EXISTS transactions_account_date
+        ON transactions(account_id, accounting_date);
+*/

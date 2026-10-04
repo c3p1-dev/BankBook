@@ -55,3 +55,20 @@ private:
 };
 
 #endif // ACCOUNT_H
+
+/*
+    SQL query to create the table
+    
+    CREATE TABLE IF NOT EXISTS accounts (
+        id              INTEGER PRIMARY KEY,
+        code            TEXT NOT NULL UNIQUE,
+        name            TEXT NOT NULL,
+        initial_balance INTEGER NOT NULL DEFAULT 0,  -- cents
+        bank            TEXT,
+        description     TEXT,
+        iban            TEXT,
+        swift           TEXT,
+        url             TEXT,
+        locked_at       INTEGER                      -- secs since epoch, NULL if unlocked
+    );
+*/
